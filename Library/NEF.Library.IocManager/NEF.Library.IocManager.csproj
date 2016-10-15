@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F51E9744-617A-47E9-8019-1BA63F70750F}</ProjectGuid>
+    <ProjectGuid>{E2CCE766-02DD-4B6F-8931-BC32A1AAB3D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NEF.DataLibrary.SqlDataLayer</RootNamespace>
-    <AssemblyName>NEF.DataLibrary.SqlDataLayer</AssemblyName>
+    <RootNamespace>NEF.Library.IocManager</RootNamespace>
+    <AssemblyName>NEF.Library.IocManager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,28 +28,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>NEF.DataLibrary.SqlDataLayer.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Crm.Sdk.Proxy">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    <Reference Include="Autofac">
+      <HintPath>..\Assemblies\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Xrm.Client">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Xrm.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xrm.Sdk">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Xrm.Sdk.dll</HintPath>
+    <Reference Include="Autofac.Extras.DynamicProxy2">
+      <HintPath>..\Assemblies\Autofac.Extras.DynamicProxy2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,26 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Interfaces\ILoyaltyPointDao.cs" />
-    <Compile Include="Interfaces\IMsCrmAccess.cs" />
-    <Compile Include="Interfaces\ISqlAccess.cs" />
-    <Compile Include="LoyaltyPointDao.cs" />
-    <Compile Include="MsCrmAccess.cs" />
+    <Compile Include="IocContainerBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlAccess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NEF.Library.Utility\NEF.Library.Utility.csproj">
+    <ProjectReference Include="..\DataLibrary\NEF.DataLibrary.SqlDataLayer\NEF.DataLibrary.SqlDataLayer.csproj">
+      <Project>{f51e9744-617a-47e9-8019-1ba63f70750f}</Project>
+      <Name>NEF.DataLibrary.SqlDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NEF.Library.Business\NEF.Library.Business.csproj">
+      <Project>{cf0b7591-610a-45c5-a160-9f1f1fd01804}</Project>
+      <Name>NEF.Library.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NEF.Library.Utility\NEF.Library.Utility.csproj">
       <Project>{a038843c-1375-4866-b4c9-5c090d90dcff}</Project>
       <Name>NEF.Library.Utility</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="NEF.DataLibrary.SqlDataLayer.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
