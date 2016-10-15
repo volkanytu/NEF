@@ -7,6 +7,7 @@ namespace NEF.ConsoleApp.CreateCampaignActivityAndList
 {
     public class EmailDetail
     {
+        //TEST
 
 
         //Burak
