@@ -89,9 +89,11 @@
     <Compile Include="DocumentMerge.cs" />
     <Compile Include="FinancialAccountHelper.cs" />
     <Compile Include="GeneralHelper.cs" />
+    <Compile Include="Interfaces\ILoyaltyPointBusiness.cs" />
     <Compile Include="InterestedProjectHelper.cs" />
     <Compile Include="InterestProductHelper.cs" />
     <Compile Include="LogoHelper.cs" />
+    <Compile Include="LoyaltyPointBusiness.cs" />
     <Compile Include="MigrationHelper.cs" />
     <Compile Include="OpportunityHelper.cs" />
     <Compile Include="ParticipationHelper.cs" />
@@ -112,6 +114,14 @@
     <Compile Include="WebFormHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLibrary\NEF.DataLibrary.SqlDataLayer\NEF.DataLibrary.SqlDataLayer.csproj">
+      <Project>{f51e9744-617a-47e9-8019-1ba63f70750f}</Project>
+      <Name>NEF.DataLibrary.SqlDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NEF.Library.Entities\NEF.Library.Entities.csproj">
+      <Project>{d41ef46c-69d9-4697-8929-f468c93a0acf}</Project>
+      <Name>NEF.Library.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NEF.Library.Utility\NEF.Library.Utility.csproj">
       <Project>{a038843c-1375-4866-b4c9-5c090d90dcff}</Project>
       <Name>NEF.Library.Utility</Name>
