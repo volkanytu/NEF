@@ -39,14 +39,17 @@
     <AssemblyOriginatorKeyFile>NEF.DataLibrary.SqlDataLayer.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Crm.Sdk">
+      <HintPath>..\..\Assemblies\Microsoft.Crm.Sdk.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Crm.Sdk.Proxy">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <HintPath>..\..\Assemblies\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Client">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Xrm.Client.dll</HintPath>
+      <HintPath>..\..\Assemblies\Microsoft.Xrm.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk">
-      <HintPath>..\..\..\..\..\CRM\src\Library\Assemblies\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\..\Assemblies\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
