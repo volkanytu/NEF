@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c91bba01-7567-4837-8daa-f13e7672fb1c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://fenixcrm.nef.com.tr:9094/MobilService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MobilService.xsd" MetadataType="Schema" ID="3e5039fa-93d0-4f33-8d9b-7df14d312d9f" SourceId="1" SourceUrl="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MobilService.disco" MetadataType="Disco" ID="c2f2e0da-ea81-4007-aefd-80c354120dc8" SourceId="1" SourceUrl="http://fenixcrm.nef.com.tr:9094/MobilService.svc?disco" />
+    <MetadataFile FileName="MobilService1.xsd" MetadataType="Schema" ID="a6c3ad54-fd76-4db3-8701-8f4d0579a4ac" SourceId="1" SourceUrl="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MobilService2.xsd" MetadataType="Schema" ID="9738b37f-3733-4be4-bc6a-f0de39baf810" SourceId="1" SourceUrl="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MobilService.wsdl" MetadataType="Wsdl" ID="de5c8211-f7e5-4278-b524-3872a392530f" SourceId="1" SourceUrl="http://fenixcrm.nef.com.tr:9094/MobilService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

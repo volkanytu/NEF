@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Common" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://fenixcrm.nef.com.tr:9091/CommonServices/Common.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://fenixcrm.nef.com.tr:9091/CommonServices/Common.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICommon_GetVoucher_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoucher" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_GetVoucher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_SingnedVoucher_InputMessage">
+    <wsdl:part name="parameters" element="tns:SingnedVoucher" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_SingnedVoucher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SingnedVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_CloseQuoteRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseQuoteRequest" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_CloseQuoteRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseQuoteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_Muhasebelestir_InputMessage">
+    <wsdl:part name="parameters" element="tns:Muhasebelestir" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_Muhasebelestir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MuhasebelestirResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_ContractSigned_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContractSigned" />
+  </wsdl:message>
+  <wsdl:message name="ICommon_ContractSigned_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContractSignedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICommon">
+    <wsdl:operation name="GetVoucher">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommon/GetVoucher" message="tns:ICommon_GetVoucher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommon/GetVoucherResponse" message="tns:ICommon_GetVoucher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SingnedVoucher">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommon/SingnedVoucher" message="tns:ICommon_SingnedVoucher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommon/SingnedVoucherResponse" message="tns:ICommon_SingnedVoucher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseQuoteRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommon/CloseQuoteRequest" message="tns:ICommon_CloseQuoteRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommon/CloseQuoteRequestResponse" message="tns:ICommon_CloseQuoteRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Muhasebelestir">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommon/Muhasebelestir" message="tns:ICommon_Muhasebelestir_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommon/MuhasebelestirResponse" message="tns:ICommon_Muhasebelestir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContractSigned">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommon/ContractSigned" message="tns:ICommon_ContractSigned_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommon/ContractSignedResponse" message="tns:ICommon_ContractSigned_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="Common" />
+</wsdl:definitions>

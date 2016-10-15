@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.euromsg.com/report" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.euromsg.com/report" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.euromsg.com/report">
+      <s:element name="GetListContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListInsertionBeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListInsertionFinishDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FtpInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServerIP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChangeDir" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Secure" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetListContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListContentResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmReportResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EmResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationStatus" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TotalRowCountInConversation" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ProcessedRowCountInConversation" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailedMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCampaignReportWithCampID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignReportWithCampIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCampaignReportWithCampIDResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="Campaign" type="tns:EmCampaignReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmCampaignReportResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryFinish" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalSent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalRead" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HardBounce" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoftBounce" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Other" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueRead" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueClick" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalClick" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReadRatio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClickRatio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HotmailJunkCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YahooJunkCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lists" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCampaignReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCampaignReportResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="Campaigns" type="tns:ArrayOfEmCampaignReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmCampaignReportResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmCampaignReportResult" nillable="true" type="tns:EmCampaignReportResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmailCampaignLinks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignLinksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailCampaignLinksResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="Links" type="tns:ArrayOfCampaignLink" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaignLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CampaignLink" nillable="true" type="tns:CampaignLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CampaignLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LinkID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalClickCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniqueClickCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmailCampaignDeliveryStatusReportViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignDeliveryStatusReportViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailCampaignDeliveryStatusReportViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignMemberLinkReportViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignMemberLinkReportViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailCampaignMemberLinkReportViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailUnsubscribeReportViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailUnsubscribeReportViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailUnsubscribeReportViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilteredMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Filters" type="tns:ArrayOfEmKeyOperatorValue" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmKeyOperatorValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmKeyOperatorValue" nillable="true" type="tns:EmKeyOperatorValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmKeyOperatorValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFilteredMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilteredMembersResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBulkFileProgress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConversationID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryBulkFileProgressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryBulkFileProgressResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetryExportJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConversationID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetryExportJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetryExportJobResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryOngoingEmailStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransacitonID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryOngoingEmailStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryOngoingEmailStatusResult" type="tns:EmOngoingEmailResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmOngoingEmailResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EmResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CampID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TransacitonID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RelayStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReadTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UndeliveryReason" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MarkedSpam" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryOngoingSmsStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransacitonID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryOngoingSmsStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryOngoingSmsStatusResult" type="tns:EmResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliveryResult" type="tns:EmSmsDeliveryResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmSmsDeliveryResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GsmNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryResult" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDetail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveredMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetIncomingSmsMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIncomingSmsMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIncomingSmsMessagesResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsMessages" type="tns:ArrayOfEmSmsIncomingMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmSmsIncomingMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmSmsIncomingMessage" nillable="true" type="tns:EmSmsIncomingMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmSmsIncomingMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GsmNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperatorMessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSmsCampaignReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSmsCampaignReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSmsCampaignReportResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="Campaigns" type="tns:ArrayOfEmSmsCampaignReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmSmsCampaignReportResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmSmsCampaignReportResult" nillable="true" type="tns:EmSmsCampaignReportResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmSmsCampaignReportResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Originator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GsmColumn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SmsMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueSms" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalSmsCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DuplicateSmsCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreparedSmsCount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalSent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Read" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Waiting" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Timeout" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lists" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSmsCampaignDeliveryStatusReportViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSmsCampaignDeliveryStatusReportViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSmsCampaignDeliveryStatusReportViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FtpDetails" type="tns:FtpInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResult" type="tns:EmReportResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDataWarehouseUploadProgress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryDataWarehouseUploadProgressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDataWarehouseUploadProgressResult" type="tns:EmReportResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="DWTables" type="tns:ArrayOfEmDWTableReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmDWTableReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmDWTableReport" nillable="true" type="tns:EmDWTableReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmDWTableReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DWTableID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRowCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvalidEmailCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvalidGsmCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BlackListedEmailCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BlackListedGsmCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NewMemberCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessStartTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessEndTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBase" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EmReportResult" nillable="true" type="tns:EmReportResult" />
+      <s:element name="EmOngoingEmailResult" nillable="true" type="tns:EmOngoingEmailResult" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListContent" />
+  </wsdl:message>
+  <wsdl:message name="GetListContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignReportWithCampIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCampaignReportWithCampID" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignReportWithCampIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCampaignReportWithCampIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCampaignReport" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCampaignReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignLinksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignLinks" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignLinksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignLinksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignDeliveryStatusReportViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignDeliveryStatusReportViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignDeliveryStatusReportViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignDeliveryStatusReportViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignMemberLinkReportViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignMemberLinkReportViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignMemberLinkReportViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignMemberLinkReportViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailUnsubscribeReportViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailUnsubscribeReportViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailUnsubscribeReportViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailUnsubscribeReportViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailUnsubscribeReportBetweenTwoDatesViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailUnsubscribeReportBetweenTwoDatesViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilteredMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFilteredMembers" />
+  </wsdl:message>
+  <wsdl:message name="GetFilteredMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilteredMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryBulkFileProgress" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryBulkFileProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobSoapIn">
+    <wsdl:part name="parameters" element="tns:RetryExportJob" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobSoapOut">
+    <wsdl:part name="parameters" element="tns:RetryExportJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryOngoingEmailStatus" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryOngoingEmailStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingSmsStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryOngoingSmsStatus" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingSmsStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryOngoingSmsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncomingSmsMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIncomingSmsMessages" />
+  </wsdl:message>
+  <wsdl:message name="GetIncomingSmsMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIncomingSmsMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignReport" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignDeliveryStatusReportViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignDeliveryStatusReportViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignDeliveryStatusReportViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignDeliveryStatusReportViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" />
+  </wsdl:message>
+  <wsdl:message name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryDataWarehouseUploadProgressSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDataWarehouseUploadProgress" />
+  </wsdl:message>
+  <wsdl:message name="QueryDataWarehouseUploadProgressSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDataWarehouseUploadProgressResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ConversationID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmReportResult" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ConversationID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmReportResult" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampID" type="s:string" />
+    <wsdl:part name="TransacitonID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmOngoingEmailResult" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ConversationID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryBulkFileProgressHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmReportResult" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ConversationID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetryExportJobHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmReportResult" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampID" type="s:string" />
+    <wsdl:part name="TransacitonID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QueryOngoingEmailStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmOngoingEmailResult" />
+  </wsdl:message>
+  <wsdl:portType name="ReportSoap">
+    <wsdl:operation name="GetListContent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query members in a list</wsdl:documentation>
+      <wsdl:input message="tns:GetListContentSoapIn" />
+      <wsdl:output message="tns:GetListContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReportWithCampID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries a campaign and its basic details.</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignReportWithCampIDSoapIn" />
+      <wsdl:output message="tns:GetCampaignReportWithCampIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the campaigns and their basic details between 2 dates. Date format must be dd.mm.yyyy</wsdl:documentation>
+      <wsdl:input message="tns:GetCampaignReportSoapIn" />
+      <wsdl:output message="tns:GetCampaignReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignLinks">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query links of a campaign</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailCampaignLinksSoapIn" />
+      <wsdl:output message="tns:GetEmailCampaignLinksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailCampaignDeliveryStatusReportViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailCampaignDeliveryStatusReportViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables and date period for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailCampaignMemberLinkReportViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailCampaignMemberLinkReportViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a unsubscribe report file with specified demografic variables for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailUnsubscribeReportViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailUnsubscribeReportViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a unsubscribe report file with specified demografic variables and date period for a campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetEmailUnsubscribeReportBetweenTwoDatesViaFtpSoapIn" />
+      <wsdl:output message="tns:GetEmailUnsubscribeReportBetweenTwoDatesViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredMembers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query subscribers by filters.</wsdl:documentation>
+      <wsdl:input message="tns:GetFilteredMembersSoapIn" />
+      <wsdl:output message="tns:GetFilteredMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryBulkFileProgress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query the status of a conversation.</wsdl:documentation>
+      <wsdl:input message="tns:QueryBulkFileProgressSoapIn" />
+      <wsdl:output message="tns:QueryBulkFileProgressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retries an export job.</wsdl:documentation>
+      <wsdl:input message="tns:RetryExportJobSoapIn" />
+      <wsdl:output message="tns:RetryExportJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports delivery status of an ongoing e-mail.</wsdl:documentation>
+      <wsdl:input message="tns:QueryOngoingEmailStatusSoapIn" />
+      <wsdl:output message="tns:QueryOngoingEmailStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingSmsStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports delivery status of an ongoing e-sms.</wsdl:documentation>
+      <wsdl:input message="tns:QueryOngoingSmsStatusSoapIn" />
+      <wsdl:output message="tns:QueryOngoingSmsStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncomingSmsMessages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports incoming sms messages...</wsdl:documentation>
+      <wsdl:input message="tns:GetIncomingSmsMessagesSoapIn" />
+      <wsdl:output message="tns:GetIncomingSmsMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the sms campaigns and their basic details between 2 dates. Date format must be dd.mm.yyyy</wsdl:documentation>
+      <wsdl:input message="tns:GetSmsCampaignReportSoapIn" />
+      <wsdl:output message="tns:GetSmsCampaignReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables for a sms campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetSmsCampaignDeliveryStatusReportViaFtpSoapIn" />
+      <wsdl:output message="tns:GetSmsCampaignDeliveryStatusReportViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query and build a delivery status file with specified demografic variables for a sms campaign and then ftp the file built to remote site.</wsdl:documentation>
+      <wsdl:input message="tns:GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapIn" />
+      <wsdl:output message="tns:GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataWarehouseUploadProgress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query the status of a datawarehouse upload.</wsdl:documentation>
+      <wsdl:input message="tns:QueryDataWarehouseUploadProgressSoapIn" />
+      <wsdl:output message="tns:QueryDataWarehouseUploadProgressSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ReportHttpGet">
+    <wsdl:operation name="QueryBulkFileProgress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query the status of a conversation.</wsdl:documentation>
+      <wsdl:input message="tns:QueryBulkFileProgressHttpGetIn" />
+      <wsdl:output message="tns:QueryBulkFileProgressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retries an export job.</wsdl:documentation>
+      <wsdl:input message="tns:RetryExportJobHttpGetIn" />
+      <wsdl:output message="tns:RetryExportJobHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports delivery status of an ongoing e-mail.</wsdl:documentation>
+      <wsdl:input message="tns:QueryOngoingEmailStatusHttpGetIn" />
+      <wsdl:output message="tns:QueryOngoingEmailStatusHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ReportHttpPost">
+    <wsdl:operation name="QueryBulkFileProgress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query the status of a conversation.</wsdl:documentation>
+      <wsdl:input message="tns:QueryBulkFileProgressHttpPostIn" />
+      <wsdl:output message="tns:QueryBulkFileProgressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retries an export job.</wsdl:documentation>
+      <wsdl:input message="tns:RetryExportJobHttpPostIn" />
+      <wsdl:output message="tns:RetryExportJobHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports delivery status of an ongoing e-mail.</wsdl:documentation>
+      <wsdl:input message="tns:QueryOngoingEmailStatusHttpPostIn" />
+      <wsdl:output message="tns:QueryOngoingEmailStatusHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReportSoap" type="tns:ReportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListContent">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetListContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReportWithCampID">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetCampaignReportWithCampID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReport">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetCampaignReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignLinks">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignDeliveryStatusReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignMemberLinkReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailUnsubscribeReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetEmailUnsubscribeReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredMembers">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetFilteredMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBulkFileProgress">
+      <soap:operation soapAction="http://ws.euromsg.com/report/QueryBulkFileProgress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <soap:operation soapAction="http://ws.euromsg.com/report/RetryExportJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <soap:operation soapAction="http://ws.euromsg.com/report/QueryOngoingEmailStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingSmsStatus">
+      <soap:operation soapAction="http://ws.euromsg.com/report/QueryOngoingSmsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncomingSmsMessages">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetIncomingSmsMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignReport">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignDeliveryStatusReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <soap:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataWarehouseUploadProgress">
+      <soap:operation soapAction="http://ws.euromsg.com/report/QueryDataWarehouseUploadProgress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportSoap12" type="tns:ReportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListContent">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetListContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReportWithCampID">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetCampaignReportWithCampID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignReport">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetCampaignReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignLinks">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignLinks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignDeliveryStatusReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignMemberLinkReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailCampaignMemberLinkReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailUnsubscribeReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailUnsubscribeReportBetweenTwoDatesViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetEmailUnsubscribeReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredMembers">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetFilteredMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryBulkFileProgress">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/QueryBulkFileProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/RetryExportJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/QueryOngoingEmailStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingSmsStatus">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/QueryOngoingSmsStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncomingSmsMessages">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetIncomingSmsMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignReport">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignDeliveryStatusReportViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/GetSmsCampaignDeliveryStatusReportBetweenTwoDatesViaFtp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDataWarehouseUploadProgress">
+      <soap12:operation soapAction="http://ws.euromsg.com/report/QueryDataWarehouseUploadProgress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportHttpGet" type="tns:ReportHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="QueryBulkFileProgress">
+      <http:operation location="/QueryBulkFileProgress" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <http:operation location="/RetryExportJob" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <http:operation location="/QueryOngoingEmailStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportHttpPost" type="tns:ReportHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="QueryBulkFileProgress">
+      <http:operation location="/QueryBulkFileProgress" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetryExportJob">
+      <http:operation location="/RetryExportJob" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOngoingEmailStatus">
+      <http:operation location="/QueryOngoingEmailStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Report">
+    <wsdl:port name="ReportSoap" binding="tns:ReportSoap">
+      <soap:address location="http://ws.euromsg.com/live/report.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportSoap12" binding="tns:ReportSoap12">
+      <soap12:address location="http://ws.euromsg.com/live/report.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportHttpGet" binding="tns:ReportHttpGet">
+      <http:address location="http://ws.euromsg.com/live/report.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportHttpPost" binding="tns:ReportHttpPost">
+      <http:address location="http://ws.euromsg.com/live/report.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

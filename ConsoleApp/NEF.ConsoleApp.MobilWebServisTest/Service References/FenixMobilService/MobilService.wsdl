@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MobilService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://fenixcrm.nef.com.tr:9094/MobilService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NEF.WebService.MobilApp" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMobilService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetPaymentList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentList" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetPaymentList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProject" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetFoldhome_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldhome" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetFoldhome_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoldhomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateFoldhome_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFoldhome" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateFoldhome_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFoldhomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_UpdateFoldhome_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldhome" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_UpdateFoldhome_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFoldhomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateWebForm_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateWebForm" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateWebForm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateWebFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateLead_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLead" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_CreateLead_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetMobilAppCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMobilAppCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IMobilService_GetMobilAppCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMobilAppCustomerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMobilService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/Login" message="tns:IMobilService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/LoginResponse" message="tns:IMobilService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/GetPaymentList" message="tns:IMobilService_GetPaymentList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/GetPaymentListResponse" message="tns:IMobilService_GetPaymentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/GetProject" message="tns:IMobilService_GetProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/GetProjectResponse" message="tns:IMobilService_GetProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/GetCustomer" message="tns:IMobilService_GetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/GetCustomerResponse" message="tns:IMobilService_GetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldhome">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/GetFoldhome" message="tns:IMobilService_GetFoldhome_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/GetFoldhomeResponse" message="tns:IMobilService_GetFoldhome_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFoldhome">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/CreateFoldhome" message="tns:IMobilService_CreateFoldhome_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/CreateFoldhomeResponse" message="tns:IMobilService_CreateFoldhome_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldhome">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/UpdateFoldhome" message="tns:IMobilService_UpdateFoldhome_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/UpdateFoldhomeResponse" message="tns:IMobilService_UpdateFoldhome_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebForm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/CreateWebForm" message="tns:IMobilService_CreateWebForm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/CreateWebFormResponse" message="tns:IMobilService_CreateWebForm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLead">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/CreateLead" message="tns:IMobilService_CreateLead_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/CreateLeadResponse" message="tns:IMobilService_CreateLead_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMobilAppCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMobilService/GetMobilAppCustomer" message="tns:IMobilService_GetMobilAppCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMobilService/GetMobilAppCustomerResponse" message="tns:IMobilService_GetMobilAppCustomer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMobilService" type="tns:IMobilService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentList">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/GetPaymentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProject">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/GetProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldhome">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/GetFoldhome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFoldhome">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/CreateFoldhome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFoldhome">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/UpdateFoldhome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWebForm">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/CreateWebForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLead">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/CreateLead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMobilAppCustomer">
+      <soap:operation soapAction="http://tempuri.org/IMobilService/GetMobilAppCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobilService">
+    <wsdl:port name="BasicHttpBinding_IMobilService" binding="tns:BasicHttpBinding_IMobilService">
+      <soap:address location="http://fenixcrm.nef.com.tr:9094/MobilService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

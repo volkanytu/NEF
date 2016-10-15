@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NEF.Plugins.CampaignActivityPlugin.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NEF_Plugins_CampaignActivityPlugin_com_euromsg_campaign_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="NEF_Plugins_CampaignActivityPlugin_com_euromsg_campaign_live_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="NEF_Plugins_CampaignActivityPlugin_com_euromsg_ws_Auth_Auth" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/auth.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

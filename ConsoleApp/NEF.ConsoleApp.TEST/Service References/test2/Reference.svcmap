@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6d67d6f5-a65c-4192-a1b6-90032cef050a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://172.19.1.66:9092/Integration.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Integration.xsd" MetadataType="Schema" ID="98ae6012-8d0e-4dbc-bd79-e94686d62139" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?xsd=xsd3" />
+    <MetadataFile FileName="Integration1.xsd" MetadataType="Schema" ID="64d7a644-936a-4558-b26f-9a2e657e3625" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?xsd=xsd1" />
+    <MetadataFile FileName="Integration.wsdl" MetadataType="Wsdl" ID="103b3292-1d5c-46e6-9b21-e0efd4d6e81c" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?wsdl" />
+    <MetadataFile FileName="Integration.disco" MetadataType="Disco" ID="2dafd27f-0885-4684-a5ee-6edc361b0864" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?disco" />
+    <MetadataFile FileName="Integration2.xsd" MetadataType="Schema" ID="be572de9-c63b-4588-ab69-553e3954ea94" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?xsd=xsd2" />
+    <MetadataFile FileName="Integration3.xsd" MetadataType="Schema" ID="6527f1bb-a84b-41ac-8f23-c39ce6318362" SourceId="1" SourceUrl="http://172.19.1.66:9092/Integration.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

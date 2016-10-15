@@ -1,0 +1,29 @@
+﻿body {
+}
+
+#logo {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.import {
+    /*background-color: gray;*/
+    width: 300px !important;
+    height: 400px !important;
+    /*position: absolute;*/
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.importlogo {
+    width: 300px !important;
+    min-height: 40px !important;
+    /*background-color: gray;*/
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top:30px !important;
+}
+
+.space {
+    height: 5px !important;
+}

@@ -1,0 +1,1940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.euromsg.com/campaign" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.euromsg.com/campaign" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.euromsg.com/campaign">
+      <s:element name="AppendListToCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendListToCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AppendListToCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmCampaignFuncRes">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EmResult" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailedMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectCreatedEmailCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SinceDayAgo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectCreatedEmailCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectCreatedEmailCampaignsResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignList" type="tns:ArrayOfCreatedEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCreatedEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CreatedEmailCampaign" nillable="true" type="tns:CreatedEmailCampaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CreatedEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectTestedEmailCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SinceDayAgo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectTestedEmailCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectTestedEmailCampaignsResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignList" type="tns:ArrayOfTestedEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTestedEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TestedEmailCampaign" nillable="true" type="tns:TestedEmailCampaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TestedEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessedMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectScheduledEmailCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SinceDayAgo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectScheduledEmailCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectScheduledEmailCampaignsResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignList" type="tns:ArrayOfScheduledEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfScheduledEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ScheduledEmailCampaign" nillable="true" type="tns:ScheduledEmailCampaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ScheduledEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessedMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectCanceledEmailCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SinceDayAgo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectCanceledEmailCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectCanceledEmailCampaignsResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignList" type="tns:ArrayOfCanceledEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCanceledEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CanceledEmailCampaign" nillable="true" type="tns:CanceledEmailCampaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CanceledEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessedMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CancelStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelectOngoingEmailCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SinceDayAgo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectOngoingEmailCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectOngoingEmailCampaignsResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignList" type="tns:ArrayOfOngoingEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOngoingEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OngoingEmailCampaign" nillable="true" type="tns:OngoingEmailCampaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OngoingEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessedMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailCampaign" type="tns:EmEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmEmailCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignType" type="tns:EmEmailCampaignType" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplyAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="Locked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClickThroughFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShareThisFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniqueEmailFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RateFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OmnitureFlag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GoogleAnalytics" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoogleUtmSource" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoogleUtmMedium" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoogleUtmTerm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoogleUtmContent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoogleUtmCampaign" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpamAnalysisScore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpamAnalysisDetail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpireDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HtmlMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreHeaderText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreparedEmailCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelayedEmailCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentEmailCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRead" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpamCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClickCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalClick" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HUCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SUCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalUnsubscribed" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EmEmailCampaignType">
+        <s:restriction base="s:string">
+          <s:enumeration value="SingleShot" />
+          <s:enumeration value="Template" />
+          <s:enumeration value="Automatic" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QuerySmsCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySmsCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySmsCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsCampaign" type="tns:EmSmsCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmSmsCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampaignType" type="tns:EmSmsCampaignType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Originator" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Locked" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SmsMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternateSmsMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniqueSmsFlag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryStartDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EmSmsCampaignType">
+        <s:restriction base="s:string">
+          <s:enumeration value="SingleShot" />
+          <s:enumeration value="Template" />
+          <s:enumeration value="Automatic" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LockCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LockCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LockCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlockCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlockCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnlockCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSmsCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsCampaign" type="tns:EmSmsCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSmsCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateSmsCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsCampaign" type="tns:EmSmsCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSmsCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsCampaign" type="tns:EmSmsCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSmsCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateSmsCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsCampaign" type="tns:EmSmsCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestSmsCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestSmsCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestSmsCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Preferences" type="tns:SmsSendOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SmsSendOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryStartDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryEndDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DemograficFilters" type="tns:ArrayOfEmFilter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lists" type="tns:ArrayOfGroupList" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarketingPDFTo" type="tns:ArrayOfEmKeyValue" />
+          <s:element minOccurs="1" maxOccurs="1" name="MarketingPDFLanguage" type="tns:PDFLanguage" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminReportTo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmFilter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmFilter" nillable="true" type="tns:EmFilter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmFilter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Operator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGroupList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GroupList" nillable="true" type="tns:GroupList" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GroupList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmKeyValue" nillable="true" type="tns:EmKeyValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PDFLanguage">
+        <s:restriction base="s:string">
+          <s:enumeration value="Turkish" />
+          <s:enumeration value="English" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendSmsCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSmsCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailCampaign" type="tns:EmEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailCampaign" type="tns:EmEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailCampaign" type="tns:EmEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailCampaign" type="tns:EmEmailCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Preferences" type="tns:SendOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SendOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DemograficFilters" type="tns:ArrayOfEmFilter" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lists" type="tns:ArrayOfGroupList" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarketingPDFTo" type="tns:ArrayOfEmKeyValue" />
+          <s:element minOccurs="1" maxOccurs="1" name="MarketingPDFLanguage" type="tns:PDFLanguage" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminReportTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubjectOptimization" type="tns:SubjectOptimizationParams" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SubjectOptimizationParams">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Target" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="WaitInHour" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailCampaignWithExtendedOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Preferences" type="tns:SendOptions" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExtendedOptions" type="tns:ArrayOfEmKeyValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailCampaignWithExtendedOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEmailCampaignWithExtendedOptionsResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForceCancelIfCampStarted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StopEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartEmailCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartEmailCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartEmailCampaignResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OfferID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="OfferHtml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpireDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateOfferResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OfferID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="OfferHtml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpireDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateOfferResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OfferID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteOfferResult" type="tns:EmCampaignFuncRes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOffer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OfferID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfferResult" type="tns:EmCampaignFuncRes" />
+            <s:element minOccurs="0" maxOccurs="1" name="OfferHtml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpireDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmCampaignFuncRes" nillable="true" type="tns:EmCampaignFuncRes" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AppendListToCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:AppendListToCampaign" />
+  </wsdl:message>
+  <wsdl:message name="AppendListToCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendListToCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectCreatedEmailCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectCreatedEmailCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="SelectCreatedEmailCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectCreatedEmailCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectTestedEmailCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectTestedEmailCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="SelectTestedEmailCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectTestedEmailCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectScheduledEmailCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectScheduledEmailCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="SelectScheduledEmailCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectScheduledEmailCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectCanceledEmailCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectCanceledEmailCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="SelectCanceledEmailCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectCanceledEmailCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectOngoingEmailCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectOngoingEmailCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="SelectOngoingEmailCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectOngoingEmailCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="QueryEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySmsCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySmsCampaign" />
+  </wsdl:message>
+  <wsdl:message name="QuerySmsCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySmsCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:LockCampaign" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:LockCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:UnlockCampaign" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:UnlockCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSmsCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateSmsCampaign" />
+  </wsdl:message>
+  <wsdl:message name="CreateSmsCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateSmsCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSmsCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSmsCampaign" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSmsCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSmsCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:TestSmsCampaign" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:TestSmsCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSmsCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsCampaign" />
+  </wsdl:message>
+  <wsdl:message name="SendSmsCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="CreateEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:TestEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:TestEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailCampaignWithExtendedOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmailCampaignWithExtendedOptions" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailCampaignWithExtendedOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailCampaignWithExtendedOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:StopEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:StopEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:StartEmailCampaign" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:StartEmailCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOffer" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOffer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteOffer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOffer" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfferResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendListToCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppendListToCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ForceCancelIfCampStarted" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+    <wsdl:part name="OfferHtml" type="s:string" />
+    <wsdl:part name="ExpireDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+    <wsdl:part name="OfferHtml" type="s:string" />
+    <wsdl:part name="ExpireDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="AppendListToCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppendListToCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LockCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UnlockCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestSmsCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestEmailCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+    <wsdl:part name="ForceCancelIfCampStarted" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelEmailCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StopEmailCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="CampaignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="StartEmailCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+    <wsdl:part name="OfferHtml" type="s:string" />
+    <wsdl:part name="ExpireDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateOfferHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+    <wsdl:part name="OfferHtml" type="s:string" />
+    <wsdl:part name="ExpireDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOfferHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="OfferID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOfferHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmCampaignFuncRes" />
+  </wsdl:message>
+  <wsdl:portType name="CampaignSoap">
+    <wsdl:operation name="AppendListToCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Append a list to a specific campaign. (For MSCRM integration)</wsdl:documentation>
+      <wsdl:input message="tns:AppendListToCampaignSoapIn" />
+      <wsdl:output message="tns:AppendListToCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCreatedEmailCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select new email campaigns within specific days.</wsdl:documentation>
+      <wsdl:input message="tns:SelectCreatedEmailCampaignsSoapIn" />
+      <wsdl:output message="tns:SelectCreatedEmailCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectTestedEmailCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select ready-to-go email campaigns within specific days.</wsdl:documentation>
+      <wsdl:input message="tns:SelectTestedEmailCampaignsSoapIn" />
+      <wsdl:output message="tns:SelectTestedEmailCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectScheduledEmailCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select scheduled mail campaigns and their status within specific days.</wsdl:documentation>
+      <wsdl:input message="tns:SelectScheduledEmailCampaignsSoapIn" />
+      <wsdl:output message="tns:SelectScheduledEmailCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCanceledEmailCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select canceled mail campaigns and their status within specific days.</wsdl:documentation>
+      <wsdl:input message="tns:SelectCanceledEmailCampaignsSoapIn" />
+      <wsdl:output message="tns:SelectCanceledEmailCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectOngoingEmailCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Select ready-to-go email ongoing campaigns within specific days.</wsdl:documentation>
+      <wsdl:input message="tns:SelectOngoingEmailCampaignsSoapIn" />
+      <wsdl:output message="tns:SelectOngoingEmailCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries an email campaign.</wsdl:documentation>
+      <wsdl:input message="tns:QueryEmailCampaignSoapIn" />
+      <wsdl:output message="tns:QueryEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries an sms campaign.</wsdl:documentation>
+      <wsdl:input message="tns:QuerySmsCampaignSoapIn" />
+      <wsdl:output message="tns:QuerySmsCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Locks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:LockCampaignSoapIn" />
+      <wsdl:output message="tns:LockCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unlocks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:UnlockCampaignSoapIn" />
+      <wsdl:output message="tns:UnlockCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create an sms campaign. If the campaign already exists, updates it.</wsdl:documentation>
+      <wsdl:input message="tns:CreateSmsCampaignSoapIn" />
+      <wsdl:output message="tns:CreateSmsCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an sms campaign. If the campaign does not exist, creates it.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSmsCampaignSoapIn" />
+      <wsdl:output message="tns:UpdateSmsCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an sms campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestSmsCampaignSoapIn" />
+      <wsdl:output message="tns:TestSmsCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an sms campaign to prod</wsdl:documentation>
+      <wsdl:input message="tns:SendSmsCampaignSoapIn" />
+      <wsdl:output message="tns:SendSmsCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create an e-mail campaign. If the campaign already exists, updates it.</wsdl:documentation>
+      <wsdl:input message="tns:CreateEmailCampaignSoapIn" />
+      <wsdl:output message="tns:CreateEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an e-mail campaign. If the campaign does not exist, creates it.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateEmailCampaignSoapIn" />
+      <wsdl:output message="tns:UpdateEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an e-mail campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestEmailCampaignSoapIn" />
+      <wsdl:output message="tns:TestEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an e-mail campaign to prod</wsdl:documentation>
+      <wsdl:input message="tns:SendEmailCampaignSoapIn" />
+      <wsdl:output message="tns:SendEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaignWithExtendedOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an e-mail campaign to prod</wsdl:documentation>
+      <wsdl:input message="tns:SendEmailCampaignWithExtendedOptionsSoapIn" />
+      <wsdl:output message="tns:SendEmailCampaignWithExtendedOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancels an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:CancelEmailCampaignSoapIn" />
+      <wsdl:output message="tns:CancelEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Stops an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:StopEmailCampaignSoapIn" />
+      <wsdl:output message="tns:StopEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Starts an e-mail which is stopped before</wsdl:documentation>
+      <wsdl:input message="tns:StartEmailCampaignSoapIn" />
+      <wsdl:output message="tns:StartEmailCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:CreateOfferSoapIn" />
+      <wsdl:output message="tns:CreateOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:UpdateOfferSoapIn" />
+      <wsdl:output message="tns:UpdateOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:DeleteOfferSoapIn" />
+      <wsdl:output message="tns:DeleteOfferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets an offer HTML</wsdl:documentation>
+      <wsdl:input message="tns:GetOfferSoapIn" />
+      <wsdl:output message="tns:GetOfferSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CampaignHttpGet">
+    <wsdl:operation name="AppendListToCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Append a list to a specific campaign. (For MSCRM integration)</wsdl:documentation>
+      <wsdl:input message="tns:AppendListToCampaignHttpGetIn" />
+      <wsdl:output message="tns:AppendListToCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Locks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:LockCampaignHttpGetIn" />
+      <wsdl:output message="tns:LockCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unlocks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:UnlockCampaignHttpGetIn" />
+      <wsdl:output message="tns:UnlockCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an sms campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestSmsCampaignHttpGetIn" />
+      <wsdl:output message="tns:TestSmsCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an e-mail campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestEmailCampaignHttpGetIn" />
+      <wsdl:output message="tns:TestEmailCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancels an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:CancelEmailCampaignHttpGetIn" />
+      <wsdl:output message="tns:CancelEmailCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Stops an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:StopEmailCampaignHttpGetIn" />
+      <wsdl:output message="tns:StopEmailCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Starts an e-mail which is stopped before</wsdl:documentation>
+      <wsdl:input message="tns:StartEmailCampaignHttpGetIn" />
+      <wsdl:output message="tns:StartEmailCampaignHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:CreateOfferHttpGetIn" />
+      <wsdl:output message="tns:CreateOfferHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:UpdateOfferHttpGetIn" />
+      <wsdl:output message="tns:UpdateOfferHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:DeleteOfferHttpGetIn" />
+      <wsdl:output message="tns:DeleteOfferHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CampaignHttpPost">
+    <wsdl:operation name="AppendListToCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Append a list to a specific campaign. (For MSCRM integration)</wsdl:documentation>
+      <wsdl:input message="tns:AppendListToCampaignHttpPostIn" />
+      <wsdl:output message="tns:AppendListToCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Locks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:LockCampaignHttpPostIn" />
+      <wsdl:output message="tns:LockCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Unlocks a ready-to-go campaign.</wsdl:documentation>
+      <wsdl:input message="tns:UnlockCampaignHttpPostIn" />
+      <wsdl:output message="tns:UnlockCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an sms campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestSmsCampaignHttpPostIn" />
+      <wsdl:output message="tns:TestSmsCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Set an e-mail campaign to test</wsdl:documentation>
+      <wsdl:input message="tns:TestEmailCampaignHttpPostIn" />
+      <wsdl:output message="tns:TestEmailCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancels an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:CancelEmailCampaignHttpPostIn" />
+      <wsdl:output message="tns:CancelEmailCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Stops an e-mail which is in send status</wsdl:documentation>
+      <wsdl:input message="tns:StopEmailCampaignHttpPostIn" />
+      <wsdl:output message="tns:StopEmailCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Starts an e-mail which is stopped before</wsdl:documentation>
+      <wsdl:input message="tns:StartEmailCampaignHttpPostIn" />
+      <wsdl:output message="tns:StartEmailCampaignHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:CreateOfferHttpPostIn" />
+      <wsdl:output message="tns:CreateOfferHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:UpdateOfferHttpPostIn" />
+      <wsdl:output message="tns:UpdateOfferHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes an offer with given HTML</wsdl:documentation>
+      <wsdl:input message="tns:DeleteOfferHttpPostIn" />
+      <wsdl:output message="tns:DeleteOfferHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CampaignSoap" type="tns:CampaignSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppendListToCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/AppendListToCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCreatedEmailCampaigns">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SelectCreatedEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectTestedEmailCampaigns">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SelectTestedEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectScheduledEmailCampaigns">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SelectScheduledEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCanceledEmailCampaigns">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SelectCanceledEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOngoingEmailCampaigns">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SelectOngoingEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/QueryEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySmsCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/QuerySmsCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/LockCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/UnlockCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSmsCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/CreateSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSmsCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/UpdateSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/TestSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SendSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/CreateEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/UpdateEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/TestEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SendEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaignWithExtendedOptions">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/SendEmailCampaignWithExtendedOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/CancelEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/StopEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/StartEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/CreateOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/UpdateOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/DeleteOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <soap:operation soapAction="http://ws.euromsg.com/campaign/GetOffer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CampaignSoap12" type="tns:CampaignSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AppendListToCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/AppendListToCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCreatedEmailCampaigns">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SelectCreatedEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectTestedEmailCampaigns">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SelectTestedEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectScheduledEmailCampaigns">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SelectScheduledEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCanceledEmailCampaigns">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SelectCanceledEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectOngoingEmailCampaigns">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SelectOngoingEmailCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/QueryEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySmsCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/QuerySmsCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/LockCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/UnlockCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSmsCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/CreateSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSmsCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/UpdateSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/TestSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SendSmsCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/CreateEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/UpdateEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/TestEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SendEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailCampaignWithExtendedOptions">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/SendEmailCampaignWithExtendedOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/CancelEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/StopEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/StartEmailCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/CreateOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/UpdateOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/DeleteOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOffer">
+      <soap12:operation soapAction="http://ws.euromsg.com/campaign/GetOffer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CampaignHttpGet" type="tns:CampaignHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AppendListToCampaign">
+      <http:operation location="/AppendListToCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <http:operation location="/LockCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <http:operation location="/UnlockCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <http:operation location="/TestSmsCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <http:operation location="/TestEmailCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <http:operation location="/CancelEmailCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <http:operation location="/StopEmailCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <http:operation location="/StartEmailCampaign" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <http:operation location="/CreateOffer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <http:operation location="/UpdateOffer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <http:operation location="/DeleteOffer" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CampaignHttpPost" type="tns:CampaignHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AppendListToCampaign">
+      <http:operation location="/AppendListToCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCampaign">
+      <http:operation location="/LockCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockCampaign">
+      <http:operation location="/UnlockCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestSmsCampaign">
+      <http:operation location="/TestSmsCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestEmailCampaign">
+      <http:operation location="/TestEmailCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelEmailCampaign">
+      <http:operation location="/CancelEmailCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEmailCampaign">
+      <http:operation location="/StopEmailCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEmailCampaign">
+      <http:operation location="/StartEmailCampaign" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOffer">
+      <http:operation location="/CreateOffer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOffer">
+      <http:operation location="/UpdateOffer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOffer">
+      <http:operation location="/DeleteOffer" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Campaign">
+    <wsdl:port name="CampaignSoap" binding="tns:CampaignSoap">
+      <soap:address location="http://ws.euromsg.com/live/campaign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CampaignSoap12" binding="tns:CampaignSoap12">
+      <soap12:address location="http://ws.euromsg.com/live/campaign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CampaignHttpGet" binding="tns:CampaignHttpGet">
+      <http:address location="http://ws.euromsg.com/live/campaign.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CampaignHttpPost" binding="tns:CampaignHttpPost">
+      <http:address location="http://ws.euromsg.com/live/campaign.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

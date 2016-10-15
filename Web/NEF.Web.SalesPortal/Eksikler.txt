@@ -1,0 +1,12 @@
+﻿contactdetail.html :
+
+*Ünvanı crm'deki hangi alan ile eşleştirilecek?
+*Aktivite Bilgileri statik set edildi
+
+
+contactcreate.html :
+
+*Dialog kapatılmadı Yapıldı
+
+*İlgilendiği konut gösterme işlemi tamamlandı.
+* Aktiviteler satışa dönüşütürülecek. Fakat önce şu activity interested house dan objecttypecode kaldırılıp or lanacak

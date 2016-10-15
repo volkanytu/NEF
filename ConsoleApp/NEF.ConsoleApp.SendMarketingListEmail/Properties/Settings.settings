@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NEF.ConsoleApp.SendMarketingListEmail.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_auth_Auth" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/auth.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_auth_live_Auth" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/auth.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_campaign_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_campaign_live_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_report_Report" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/report.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_com_euromsg_report_live_Report" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/report.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_sendlist_SendList" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/sendlist.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_SendMarketingListEmail_sendlist_live_SendList" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/sendlist.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

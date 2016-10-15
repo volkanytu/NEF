@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NEF.ConsoleApp.CreateCampaignActivityAndList.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_auth_Auth" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/auth.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_campaign_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_report_Report" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/report.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_sendlist_SendList" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/liveb/sendlist.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_auth_live_Auth" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/auth.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_campaign_live_Campaign" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/campaign.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_com_euromsg_ws_report_live_Report" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/report.asmx</Value>
+    </Setting>
+    <Setting Name="Nef_ConsoleApp_CreateCampaignActivityAndList_sendlist_live_SendList" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws.euromsg.com/live/sendlist.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

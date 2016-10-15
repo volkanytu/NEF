@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/NEF.Library.Utility" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NEF.Library.Utility" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://172.19.1.66:9092/Integration.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/xrm/2011/Contracts" />
+  <xs:import schemaLocation="http://172.19.1.66:9092/Integration.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activities" nillable="true" type="tns:ArrayOfActivity" />
+      <xs:element minOccurs="0" name="AddressDetail" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="City" nillable="true" type="q1:EntityReference" />
+      <xs:element minOccurs="0" name="ContactId" type="ser:guid" />
+      <xs:element minOccurs="0" name="ContactType" type="tns:ContactTypes" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Country" nillable="true" type="q2:EntityReference" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="District" nillable="true" type="q3:EntityReference" />
+      <xs:element minOccurs="0" name="EmailAddress1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FamilyStatusCode" type="tns:FamilyStatusCodes" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenderCode" type="tns:GenderCodes" />
+      <xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobTitle" nillable="true" type="tns:JobTitles" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Nationality" nillable="true" type="q4:EntityReference" />
+      <xs:element minOccurs="0" name="Opportunities" nillable="true" type="tns:ArrayOfOpportunity" />
+      <xs:element minOccurs="0" name="OverAddressDetail" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="OverCity" nillable="true" type="q5:EntityReference" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="OverCountry" nillable="true" type="q6:EntityReference" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Owner" nillable="true" type="q7:EntityReference" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Participation" nillable="true" type="q8:EntityReference" />
+      <xs:element minOccurs="0" name="Projects" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="Quotes" nillable="true" type="tns:ArrayOfQuote" />
+      <xs:element xmlns:q9="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="SubParticipation" nillable="true" type="q9:EntityReference" />
+      <xs:element xmlns:q10="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Town" nillable="true" type="q10:EntityReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contact" nillable="true" type="tns:Contact" />
+  <xs:complexType name="ArrayOfActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Activity" nillable="true" type="tns:Activity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivity" nillable="true" type="tns:ArrayOfActivity" />
+  <xs:complexType name="Activity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityId" type="ser:guid" />
+      <xs:element xmlns:q11="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="ActivityParty" nillable="true" type="q11:EntityReference" />
+      <xs:element xmlns:q12="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="ActivityStatus" nillable="true" type="q12:EntityReference" />
+      <xs:element minOccurs="0" name="ActivityStatusCode" type="tns:ActivityStatusCodes" />
+      <xs:element xmlns:q13="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="ActivityStatusDetail" nillable="true" type="q13:EntityReference" />
+      <xs:element minOccurs="0" name="ActivityType" nillable="true" type="xs:string" />
+      <xs:element xmlns:q14="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Contact" nillable="true" type="q14:EntityReference" />
+      <xs:element minOccurs="0" name="CreatedOnString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direction" nillable="true" type="tns:Directions" />
+      <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObjectTypeCode" nillable="true" type="tns:ObjectTypeCodes" />
+      <xs:element xmlns:q15="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Owner" nillable="true" type="q15:EntityReference" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PresentationType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="tns:PriorityValues" />
+      <xs:element minOccurs="0" name="PriorityString" nillable="true" type="xs:string" />
+      <xs:element xmlns:q16="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="SalesOffice" nillable="true" type="q16:EntityReference" />
+      <xs:element minOccurs="0" name="ScheduledStartString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="tns:ActivityStateCodes" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Activity" nillable="true" type="tns:Activity" />
+  <xs:simpleType name="ActivityStatusCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bos" />
+      <xs:enumeration value="Ilgili" />
+      <xs:enumeration value="Ilgisiz" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActivityStatusCodes" nillable="true" type="tns:ActivityStatusCodes" />
+  <xs:simpleType name="Directions">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Gelen" />
+      <xs:enumeration value="Giden" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Directions" nillable="true" type="tns:Directions" />
+  <xs:simpleType name="ObjectTypeCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Telefon">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4210</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Randevu">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4201</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ObjectTypeCodes" nillable="true" type="tns:ObjectTypeCodes" />
+  <xs:simpleType name="PriorityValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Dusuk" />
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="Yuksek" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PriorityValues" nillable="true" type="tns:PriorityValues" />
+  <xs:simpleType name="ActivityStateCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Acik" />
+      <xs:enumeration value="Tamamlandi" />
+      <xs:enumeration value="IptalEdildi" />
+      <xs:enumeration value="Zamanlanmis" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActivityStateCodes" nillable="true" type="tns:ActivityStateCodes" />
+  <xs:simpleType name="ContactTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Firma">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Aday">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000000</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gercek">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000001</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Potansiyel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000002</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContactTypes" nillable="true" type="tns:ContactTypes" />
+  <xs:simpleType name="FamilyStatusCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bekar">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Evli">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Bosanmis">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Dul">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FamilyStatusCodes" nillable="true" type="tns:FamilyStatusCodes" />
+  <xs:simpleType name="GenderCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Erkek">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Kadın">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GenderCodes" nillable="true" type="tns:GenderCodes" />
+  <xs:simpleType name="JobTitles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Doktor">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Muhendis">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Avukat">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mimar">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="JobTitles" nillable="true" type="tns:JobTitles" />
+  <xs:complexType name="ArrayOfOpportunity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Opportunity" nillable="true" type="tns:Opportunity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOpportunity" nillable="true" type="tns:ArrayOfOpportunity" />
+  <xs:complexType name="Opportunity">
+    <xs:sequence>
+      <xs:element xmlns:q17="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="ActivityStatus" nillable="true" type="q17:EntityReference" />
+      <xs:element xmlns:q18="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="ActivityStatusDetail" nillable="true" type="q18:EntityReference" />
+      <xs:element xmlns:q19="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Contact" nillable="true" type="q19:EntityReference" />
+      <xs:element minOccurs="0" name="CreatedOnString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OppProductCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OppProducts" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="OpportunityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpportunityId" type="ser:guid" />
+      <xs:element xmlns:q20="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Owner" nillable="true" type="q20:EntityReference" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="tns:StringMap" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="tns:StringMap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Opportunity" nillable="true" type="tns:Opportunity" />
+  <xs:complexType name="ArrayOfProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Aks" nillable="true" type="xs:int" />
+      <xs:element xmlns:q21="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Block" nillable="true" type="q21:EntityReference" />
+      <xs:element minOccurs="0" name="Brut" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q22="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Currency" nillable="true" type="q22:EntityReference" />
+      <xs:element minOccurs="0" name="Direction" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
+      <xs:element xmlns:q23="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="GeneralHomeType" nillable="true" type="q23:EntityReference" />
+      <xs:element minOccurs="0" name="HasTerrace" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HomeNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q24="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="HomeType" nillable="true" type="q24:EntityReference" />
+      <xs:element minOccurs="0" name="KdvRatio" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q25="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Location" nillable="true" type="q25:EntityReference" />
+      <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ModifiedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Net" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
+      <xs:element xmlns:q26="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="PriceList" nillable="true" type="q26:EntityReference" />
+      <xs:element minOccurs="0" name="PriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="ser:guid" />
+      <xs:element xmlns:q27="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Project" nillable="true" type="q27:EntityReference" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="tns:StringMap" />
+      <xs:element minOccurs="0" name="TaxofStampRatio" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnitPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnitPriceString" nillable="true" type="xs:string" />
+      <xs:element xmlns:q28="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Uom" nillable="true" type="q28:EntityReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+  <xs:complexType name="StringMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StringMap" nillable="true" type="tns:StringMap" />
+  <xs:complexType name="ArrayOfQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Quote" nillable="true" type="tns:Quote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuote" nillable="true" type="tns:ArrayOfQuote" />
+  <xs:complexType name="Quote">
+    <xs:sequence>
+      <xs:element xmlns:q29="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Contact" nillable="true" type="q29:EntityReference" />
+      <xs:element minOccurs="0" name="ContratDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ContratDateString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedOnString" nillable="true" type="xs:string" />
+      <xs:element xmlns:q30="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Currency" nillable="true" type="q30:EntityReference" />
+      <xs:element minOccurs="0" name="DiscountPercentage" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DiscountPriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HouseDiscountPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HouseDiscountPriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HouseListPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HouseListPriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HouseSalePrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="HouseSalePriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstNumber" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsRevision" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q31="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Opportunity" nillable="true" type="q31:EntityReference" />
+      <xs:element xmlns:q32="http://schemas.microsoft.com/xrm/2011/Contracts" minOccurs="0" name="Owner" nillable="true" type="q32:EntityReference" />
+      <xs:element minOccurs="0" name="PaymentPlan" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PaymentPlanDiscountRate" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PaymentPlanDiscountRateString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentTerm" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PrePaymentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PrePaymentPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrePaymentPriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="QuoteId" type="ser:guid" />
+      <xs:element minOccurs="0" name="QuoteNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RevisionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RevisionNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SalesDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SalesDateString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesDateStringHour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesType" nillable="true" type="tns:SalesTypes" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="tns:StringMap" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="tns:StringMap" />
+      <xs:element minOccurs="0" name="SumInstPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SumInstPriceString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SumIntervalPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SumIntervalPriceString" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Quote" nillable="true" type="tns:Quote" />
+  <xs:simpleType name="SalesTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bos">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Yeni">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000000</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Devir">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000001</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Degisim">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100000002</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SalesTypes" nillable="true" type="tns:SalesTypes" />
+</xs:schema>

@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.euromsg.com/sendlist" xmlns:s1="http://ws.euromsg.com/sendlist/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.euromsg.com/sendlist" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.euromsg.com/sendlist">
+      <s:element name="QuerySendListMemberCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySendListMemberCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySendListMemberCountResult" type="tns:EmSendListResult" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmSendListResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EmResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreatedListID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailedMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateSendList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSendListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateSendListResult" type="tns:EmSendListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSendList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveSendListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveSendListResult" type="tns:EmSendListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBulk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DemograficData" type="tns:ArrayOfArrayOfEmKeyValue" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForceInsert" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArrayOfEmKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfEmKeyValue" nillable="true" type="tns:ArrayOfEmKeyValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmKeyValue" nillable="true" type="tns:EmKeyValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddBulkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBulkResult" type="tns:EmSendListResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="DetailsResult" type="tns:ArrayOfBulkDetailedResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBulkDetailedResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BulkDetailedResult" nillable="true" type="tns:BulkDetailedResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BulkDetailedResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetailedMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddBulkFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="File" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBulkFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBulkFileResult" type="tns:EmSendListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveBulkFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Map" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="File" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NotificationEmail" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteIfInNoList" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveBulkFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveBulkFileResult" type="tns:EmSendListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySendLists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceTicket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySendListsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySendListsResult" type="tns:EmQuerySendListResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmQuerySendListResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EmResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SendLists" type="tns:ArrayOfEmSendListResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmSendListResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmSendListResponse" nillable="true" type="tns:EmSendListResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmSendListResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EmSendListResult" nillable="true" type="tns:EmSendListResult" />
+      <s:element name="EmQuerySendListResult" nillable="true" type="tns:EmQuerySendListResult" />
+    </s:schema>
+    <s:schema targetNamespace="http://ws.euromsg.com/sendlist/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QuerySendListMemberCountSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySendListMemberCount" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListMemberCountSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySendListMemberCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateSendList" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateSendListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveSendList" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveSendListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBulk" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBulkResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBulkFile" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBulkFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveBulkFile" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveBulkFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySendLists" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySendListsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Map" type="s:string" />
+    <wsdl:part name="File" type="s1:StringArray" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="NotificationEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Map" type="s:string" />
+    <wsdl:part name="File" type="s1:StringArray" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="NotificationEmail" type="s:string" />
+    <wsdl:part name="DeleteIfInNoList" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsHttpGetIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsHttpGetOut">
+    <wsdl:part name="Body" element="tns:EmQuerySendListResult" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateSendListHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveSendListHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Map" type="s:string" />
+    <wsdl:part name="File" type="s1:StringArray" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="NotificationEmail" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddBulkFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+    <wsdl:part name="ListGroup" type="s:string" />
+    <wsdl:part name="ListName" type="s:string" />
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Map" type="s:string" />
+    <wsdl:part name="File" type="s1:StringArray" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="NotificationEmail" type="s:string" />
+    <wsdl:part name="DeleteIfInNoList" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBulkFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmSendListResult" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsHttpPostIn">
+    <wsdl:part name="ServiceTicket" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="QuerySendListsHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmQuerySendListResult" />
+  </wsdl:message>
+  <wsdl:portType name="SendListSoap">
+    <wsdl:operation name="QuerySendListMemberCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns Member Count In A Given Send List</wsdl:documentation>
+      <wsdl:input message="tns:QuerySendListMemberCountSoapIn" />
+      <wsdl:output message="tns:QuerySendListMemberCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a Send List</wsdl:documentation>
+      <wsdl:input message="tns:CreateSendListSoapIn" />
+      <wsdl:output message="tns:CreateSendListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove a Send List</wsdl:documentation>
+      <wsdl:input message="tns:RemoveSendListSoapIn" />
+      <wsdl:output message="tns:RemoveSendListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBulk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk add to a send list</wsdl:documentation>
+      <wsdl:input message="tns:AddBulkSoapIn" />
+      <wsdl:output message="tns:AddBulkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk add to a send list via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:AddBulkFileSoapIn" />
+      <wsdl:output message="tns:AddBulkFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk remove from a send list or delete members via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:RemoveBulkFileSoapIn" />
+      <wsdl:output message="tns:RemoveBulkFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query Send Lists of customer</wsdl:documentation>
+      <wsdl:input message="tns:QuerySendListsSoapIn" />
+      <wsdl:output message="tns:QuerySendListsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SendListHttpGet">
+    <wsdl:operation name="CreateSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a Send List</wsdl:documentation>
+      <wsdl:input message="tns:CreateSendListHttpGetIn" />
+      <wsdl:output message="tns:CreateSendListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove a Send List</wsdl:documentation>
+      <wsdl:input message="tns:RemoveSendListHttpGetIn" />
+      <wsdl:output message="tns:RemoveSendListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk add to a send list via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:AddBulkFileHttpGetIn" />
+      <wsdl:output message="tns:AddBulkFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk remove from a send list or delete members via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:RemoveBulkFileHttpGetIn" />
+      <wsdl:output message="tns:RemoveBulkFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query Send Lists of customer</wsdl:documentation>
+      <wsdl:input message="tns:QuerySendListsHttpGetIn" />
+      <wsdl:output message="tns:QuerySendListsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SendListHttpPost">
+    <wsdl:operation name="CreateSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a Send List</wsdl:documentation>
+      <wsdl:input message="tns:CreateSendListHttpPostIn" />
+      <wsdl:output message="tns:CreateSendListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove a Send List</wsdl:documentation>
+      <wsdl:input message="tns:RemoveSendListHttpPostIn" />
+      <wsdl:output message="tns:RemoveSendListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk add to a send list via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:AddBulkFileHttpPostIn" />
+      <wsdl:output message="tns:AddBulkFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bulk remove from a send list or delete members via a File Upload</wsdl:documentation>
+      <wsdl:input message="tns:RemoveBulkFileHttpPostIn" />
+      <wsdl:output message="tns:RemoveBulkFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query Send Lists of customer</wsdl:documentation>
+      <wsdl:input message="tns:QuerySendListsHttpPostIn" />
+      <wsdl:output message="tns:QuerySendListsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SendListSoap" type="tns:SendListSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QuerySendListMemberCount">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/QuerySendListMemberCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSendList">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/CreateSendList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/RemoveSendList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulk">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/AddBulk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/AddBulkFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/RemoveBulkFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <soap:operation soapAction="http://ws.euromsg.com/sendlist/QuerySendLists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendListSoap12" type="tns:SendListSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QuerySendListMemberCount">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/QuerySendListMemberCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSendList">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/CreateSendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/RemoveSendList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulk">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/AddBulk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/AddBulkFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/RemoveBulkFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <soap12:operation soapAction="http://ws.euromsg.com/sendlist/QuerySendLists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendListHttpGet" type="tns:SendListHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="CreateSendList">
+      <http:operation location="/CreateSendList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <http:operation location="/RemoveSendList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <http:operation location="/AddBulkFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <http:operation location="/RemoveBulkFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <http:operation location="/QuerySendLists" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendListHttpPost" type="tns:SendListHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="CreateSendList">
+      <http:operation location="/CreateSendList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSendList">
+      <http:operation location="/RemoveSendList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBulkFile">
+      <http:operation location="/AddBulkFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBulkFile">
+      <http:operation location="/RemoveBulkFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySendLists">
+      <http:operation location="/QuerySendLists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SendList">
+    <wsdl:port name="SendListSoap" binding="tns:SendListSoap">
+      <soap:address location="http://ws.euromsg.com/liveb/sendlist.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SendListSoap12" binding="tns:SendListSoap12">
+      <soap12:address location="http://ws.euromsg.com/liveb/sendlist.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SendListHttpGet" binding="tns:SendListHttpGet">
+      <http:address location="http://ws.euromsg.com/liveb/sendlist.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SendListHttpPost" binding="tns:SendListHttpPost">
+      <http:address location="http://ws.euromsg.com/liveb/sendlist.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

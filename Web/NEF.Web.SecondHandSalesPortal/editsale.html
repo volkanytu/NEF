@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" ng-app="" ng-controller="mainController">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Satış Kaydı Görüntile</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="global/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-datepicker/css/datepicker3.css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+
+
+
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN PAGE STYLES -->
+    <link href="admin/pages/css/tasks.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="global/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body style="background-color:white !important;">
+    <div class="clearfix">
+    </div>
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container" style="padding-right:20px !important;">
+        <!-- BEGIN CONTENT -->
+
+        <div class="page-content">
+
+            <div class="row" id="main">
+                <div class="col-md-6">
+
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet  box blue-steel" id="pnlQuoteDetail">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-info"></i>Satış Bilgileri
+                            </div>
+                            <div class="actions">
+                                <a href="#" class="btn yellow" ng-disabled="IsFormDisabled" ng-click="SendToApproval()">
+                                    <i class="glyphicon glyphicon-ok"></i> Onaya Gönder
+                                </a>
+                                <a href="#" class="btn yellow" ng-click="Update()" ng-disabled="IsFormDisabled">
+                                    <i class="glyphicon glyphicon-ok"></i> Güncelle
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            <form action="#" class="form-horizontal">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Konut Liste Fiyatı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.HouseListPriceString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Özel İndirim %</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                        <input type="text" class="form-control" id="txtDiscountPercentage" ng-model="quote.DiscountPercentage" />
+                                                        <!--<input type="text" class="form-control" id="txtPercentagePrice" disabled />-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Özel İndirim Tutarı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" id="txtDiscountPrice" ng-model="quote.DiscountPrice" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">İndirimli Konut Fiyatı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.HouseDiscountPriceString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Ön Ödeme Tutarı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.PrePaymentPriceString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Ara Ödemeler Tutarı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.SumIntervalPriceString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Ödeme Vadesi</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.PaymentTerm" ng-disabled="IsFormDisabled" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Sarı Excel İndirim Oranı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.PaymentPlanDiscountRate" ng-disabled="IsFormDisabled" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satış Kimliği</label>
+                                                <div class="col-md-9">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                                <input type="text" class="form-control" placeholder="Satış Kimliği" ng-model="quote.QuoteNumber" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Müşteri</label>
+                                                <div class="col-md-9">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                                <input type="text" class="form-control" placeholder="" ng-model="quote.Contact.Name" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satış Tipi</label>
+                                                <div class="col-md-9">
+                                                    <select name="foo" class="form-control" ng-model="quote.SalesType" ng-disabled="IsFormDisabled">
+                                                        <option value="-1"></option>
+                                                        <option value="100000000">Yeni</option>
+                                                        <option value="100000001">Devir</option>
+                                                        <option value="100000002">Değişim</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satış Temsilcisi</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.Owner.Name" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Başlık</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.Name" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Sözleşme Tarihi</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group date date-picker" id="txtContratDate" data-date-format="dd.mm.yyyy" ng-disabled="IsFormDisabled">
+                                                        <input type="text" class="form-control" ng-model="quote.ContratDateString" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satışın Durumu</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-pencil"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.StatusCode.Name" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satış İşlem Tarihi</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-calendar"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.SalesDateString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Taksit Sayısı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.InstNumber" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Taksit Tutarı</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.SumInstPriceString" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Para Birimi</label>
+                                                <div class="col-md-9">
+                                                    <select name="foo" class="form-control" ng-model="currency" ng-disabled="IsFormDisabled">
+                                                        <option value="{{x.TransactionCurrencyId}}" ng-repeat="x in currencies">{{x.Name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Ödeme Planı</label>
+                                                <div class="col-md-9">
+                                                    <div class="col-md-12">
+                                                        <select name="foo" class="form-control" ng-model="quote.PaymentPlan" ng-disabled="IsFormDisabled">
+                                                            <option value="0">Banka Kredili Ödeme Planı</option>
+                                                            <option value="1">Kredisiz Ödeme Planı</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">İkinci Kişi Satışı</label>
+                                                <div class="col-md-9">
+                                                    <select name="foo" class="form-control" ng-model="quote.HasSecondCustomer" ng-disabled="IsFormDisabled">
+                                                        <option value="false">Hayır</option>
+                                                        <option value="true">Evet</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">İkinci Müşteri</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                        <input type="text" class="form-control" ng-model="quote.SecondCustomer.Id" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--<div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">Satış Ofisi</label>
+                                                <div class="col-md-9">
+                                                    <select name="foo" class="form-control" ng-model="quote.SalesOffice.Id">
+                                                        <option value="{{GuidEmpty}}"></option>
+                                                        <option value="{{x.SalesOfficeId}}" ng-repeat="x in salesOffices">{{x.Name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3 class="place-left col-md-offset-1" id="lblImage"><a href="http://fenixcrm.nef.com.tr/FENiX/Activities/Attachment/download.aspx?AttachmentType=5&IsNotesTabAttachment=1&AttachmentId={{quote.Annotation.Id}}&CRMWRPCToken=GeAHiN4TEeSAzwBQVqYGA%2bWtf0SYtH8g%2bAobrzMwtXloazymRxnFXOo4IrDGYq0r&CRMWRPCTokenTimeStamp=635665190414265765">{{quote.Annotation.Name}}</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-md-3">Excel Yükleme</label>-->
+                                        <div class="col-md-12">
+                                            <div style="display:none;">
+                                                <input type="text" disabled="disabled" placeholder="Dosya yolu" id="txt_file" />
+                                                <input type="file" id="file" />
+                                            </div>
+
+
+                                            <input type="button" class="btn blue col-md-offset-1" id="btnSelectPhoto" style="margin-right: 10px !important;" value="Sarı Excel" ng-disabled="IsFormDisabled" />
+
+                                            <button type="button" class="btn blue start" id="btnUpload" style="display:none;" ng-click="UploadCrm()">
+                                                <i class="fa fa-upload"></i>
+                                                <span>
+                                                    Yükle
+                                                </span>
+                                            </button>
+                                            <button type="button" class="btn red delete" id="btnDelete" style="display:none;">
+                                                <i class="fa fa-trash"></i>
+                                                <span>
+                                                    Sil
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+
+                </div>
+
+                <div class="col-md-6">
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet  box green" id="pnlKapora">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-home"></i>Ön Ödeme Bilgileri
+                            </div>
+
+                            <div class="actions">
+                                <a href="#" class="btn red" ng-click="KaporaTaken()" ng-show="IsPrePaymentTaken" ng-disabled="IsPrePaymentClick">
+                                    <i class="glyphicon glyphicon-plus"></i> Ön Ödemeyi Aldım
+                                </a>
+                                <a href="#" class="btn red" ng-click="AddPrePayment()" ng-disabled="IsFormDisabled">
+                                    <i class="glyphicon glyphicon-plus"></i> Ekle
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="portlet-body disabled" id="plBodyPrePayment">
+                            <!-- BEGIN FORM-->
+                            <div class="form" ng-hide="hasPrePayment">
+                                <form action="#" class="form-horizontal">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">İşlem Tarihi</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group date date-picker" id="txtPaymentDate" data-date-format="dd.mm.yyyy" ng-disabled="IsFormDisabled">
+                                                            <input type="text" class="form-control" readonly ng-model="prePayment.PaymentDateString">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Tutar</label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                            <input type="text" class="form-control" id="txtPrePaymentAmount" placeholder="" ng-model="prePayment.PaymentAmount" ng-disabled="IsFormDisabled" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Ödeme Tipi</label>
+                                                    <div class="col-md-9">
+                                                        <select name="foo" class="form-control" ng-model="prePayment.PaymentCashType" ng-disabled="IsFormDisabled">
+                                                            <option value="-1"></option>
+                                                            <option value="2">Nakit</option>
+                                                            <option value="3">Kredi Kartı</option>
+                                                            <option value="1">Havale</option>
+                                                            <option value="5">Çek</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Para Birimi</label>
+                                                    <div class="col-md-9">
+                                                        <select name="foo" class="form-control" ng-model="prePayment.Currency.Id" ng-disabled="IsFormDisabled">
+                                                            <option value="{{x.TransactionCurrencyId}}" ng-repeat="x in currencies">{{x.Name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-9">
+                                                        <button type="button" class="btn btn-primary" ng-click="CreateOrUpdatePrePayment()" ng-disabled="IsFormDisabled">Kaydet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet  box yellow" id="plSalesAmount">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-home"></i>Satış Konutları
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-hover" id="tblHouses">
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <i class="icon-home"></i> Proje
+                                        </th>
+                                        <th>
+                                            Blok
+                                        </th>
+                                        <th>
+                                            G.Daire Tipi
+                                        </th>
+                                        <th>
+                                            Kat
+                                        </th>
+                                        <th>
+                                            Brüt m2
+                                        </th>
+                                        <th>
+                                            Daire No
+                                        </th>
+                                        <th>
+                                            Konut Durumu
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in quote.Products">
+                                        <td>
+                                            {{x.Project.Name}}
+                                        </td>
+                                        <td>
+                                            {{x.Block.Name}}
+                                        </td>
+                                        <td>
+                                            {{x.GeneralHomeType.Name}}
+                                        </td>
+                                        <td>
+                                            {{x.FloorNumber}}
+                                        </td>
+                                        <td>
+                                            {{x.Brut}}
+                                        </td>
+                                        <td>
+                                            <a href="#" ng-click="EditHouse(x.ProductId)">{{x.HomeNumber}}</a>
+                                        </td>
+                                        <td>
+                                            {{x.StatusCode.Name}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END PORTLET-->
+                </div>
+            </div>
+
+            <div class="clearfix">
+            </div>
+        </div>
+
+        <!-- END CONTENT -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+    <script src="../../global/plugins/respond.min.js"></script>
+    <script src="../../global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+    <script src="global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+    <script src="global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+    <script src="global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+
+    <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+    <script src="global/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
+    <script src="global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="global/plugins/gritter/js/jquery.gritter.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="admin/layout/scripts/layout.js" type="text/javascript"></script>
+    <script src="admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+    <script src="admin/pages/scripts/index.js" type="text/javascript"></script>
+    <script src="admin/pages/scripts/tasks.js" type="text/javascript"></script>
+    <script src="global/plugins/select2/select2.min.js"></script>
+    <script src="scripts/pagescripts/jquery.nicescroll.js"></script>
+
+    <script type="text/javascript" src="global/plugins/clockface/js/clockface.js"></script>
+    <script type="text/javascript" src="global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="global/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <!--<script src="global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.tr.js"></script>-->
+    <script type="text/javascript" src="global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+
+
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN CUSTOM SCRIPTS-->
+    <script src="scripts/jquery.mask.js"></script>
+    <script src="scripts/pagescripts/global.js"></script>
+    <script src="scripts/pagescripts/editSale.js"></script>
+    <script src="scripts/purl.js"></script>
+    <!-- END CUSTOM SCRIPTS-->
+    <script>
+        jQuery(document).ready(function () {
+            QuoteHelper.OnLoad();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

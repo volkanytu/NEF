@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BAF59E8-CBA6-408C-8784-630FD822CD9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NEF.Plugins.AppointmentPlugIn</RootNamespace>
+    <AssemblyName>NEF.Plugins.AppointmentPlugIn</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NEF.Plugins.AppointmentPlugIn.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvParser">
+      <HintPath>..\..\Library\Assemblies\CsvParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk">
+      <HintPath>..\..\Library\Assemblies\Microsoft.Crm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\..\Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\..\Library\Assemblies\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Library\NEF.Library.Business\AccountHelper.cs">
+      <Link>Business\AccountHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\ActivityHelper.cs">
+      <Link>Business\ActivityHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\AddressHelper.cs">
+      <Link>Business\AddressHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\ContactHelper.cs">
+      <Link>Business\ContactHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\CurrencyHelper.cs">
+      <Link>Business\CurrencyHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\FeedsHelper.cs">
+      <Link>Business\FeedsHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\FinancialAccountHelper.cs">
+      <Link>Business\FinancialAccountHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\GeneralHelper.cs">
+      <Link>Business\GeneralHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\InterestProductHelper.cs">
+      <Link>Business\InterestProductHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\LogoHelper.cs">
+      <Link>Business\LogoHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\OpportunityHelper.cs">
+      <Link>Business\OpportunityHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\ParticipationHelper.cs">
+      <Link>Business\ParticipationHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\PaymentHelper.cs">
+      <Link>Business\PaymentHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\ProductHelper.cs">
+      <Link>Business\ProductHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\QuoteHelper.cs">
+      <Link>Business\QuoteHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\SystemUserHelper.cs">
+      <Link>Business\SystemUserHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\WebFormHelper.cs">
+      <Link>Business\WebFormHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\ClassDefinations.cs">
+      <Link>Utility\ClassDefinations.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\Enumarations.cs">
+      <Link>Utility\Enumarations.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\EventLogHelper.cs">
+      <Link>Utility\EventLogHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\FileLogHelper.cs">
+      <Link>Utility\FileLogHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\Globals.cs">
+      <Link>Utility\Globals.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\MSCRM.cs">
+      <Link>Utility\MSCRM.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\RegistryHelper.cs">
+      <Link>Utility\RegistryHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Utility\SqlDataAccess.cs">
+      <Link>Utility\SqlDataAccess.cs</Link>
+    </Compile>
+    <Compile Include="PostCreate.cs" />
+    <Compile Include="PreState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NEF.Plugins.AppointmentPlugIn.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
