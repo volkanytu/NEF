@@ -8,6 +8,8 @@ namespace NEF.ConsoleApp.CreateCampaignActivityAndList
     public class EmailDetail
     {
 
+
+        //Burak
         public string Key { get; set; }
         public string RecordId { get; set; }
         public string Description { get; set; }
