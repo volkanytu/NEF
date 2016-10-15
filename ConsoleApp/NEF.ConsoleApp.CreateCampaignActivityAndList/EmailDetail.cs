@@ -7,7 +7,7 @@ namespace NEF.ConsoleApp.CreateCampaignActivityAndList
 {
     public class EmailDetail
     {
-
+        //TEST
         public string Key { get; set; }
         public string RecordId { get; set; }
         public string Description { get; set; }
