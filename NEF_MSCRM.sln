@@ -48,6 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", 
 		Library\Assemblies\MessagingToolkit.Wap.dll = Library\Assemblies\MessagingToolkit.Wap.dll
 		Library\Assemblies\Microsoft.Crm.Sdk.dll = Library\Assemblies\Microsoft.Crm.Sdk.dll
 		Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll = Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll
+		Library\Assemblies\Microsoft.Xrm.Client.dll = Library\Assemblies\Microsoft.Xrm.Client.dll
 		Library\Assemblies\Microsoft.Xrm.Sdk.dll = Library\Assemblies\Microsoft.Xrm.Sdk.dll
 	EndProjectSection
 EndProject
