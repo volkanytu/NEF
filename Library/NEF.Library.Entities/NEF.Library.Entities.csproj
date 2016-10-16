@@ -49,9 +49,12 @@
   <ItemGroup>
     <Compile Include="CrmEntities\EntityReferenceWrapper.cs" />
     <Compile Include="CrmEntities\LoyaltyPoint.cs" />
+    <Compile Include="CrmEntities\LoyaltySegmentConfig.cs" />
     <Compile Include="CrmEntities\OptionSetValueWrapper.cs" />
     <Compile Include="CrmEntities\CustomAttributes.cs" />
+    <Compile Include="CrmEntities\Quote.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="CrmEntities\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

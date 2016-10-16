@@ -17,14 +17,14 @@ namespace NEF.Library.Business
             _loyaltyPointDao = loyaltyPointDao;
         }
 
-        public Guid Insert(LoyaltyPoint accountPhone)
+        public Guid Insert(LoyaltyPoint loyaltyPoint)
         {
-            return _loyaltyPointDao.Insert(accountPhone);
+            return _loyaltyPointDao.Insert(loyaltyPoint);
         }
 
-        public void Update(LoyaltyPoint accountPhone)
+        public void Update(LoyaltyPoint loyaltyPoint)
         {
-            _loyaltyPointDao.Update(accountPhone);
+            _loyaltyPointDao.Update(loyaltyPoint);
         }
 
         public LoyaltyPoint Get(Guid id)

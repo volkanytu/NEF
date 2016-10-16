@@ -3,12 +3,8 @@ using NEF.DataLibrary.SqlDataLayer;
 using NEF.DataLibrary.SqlDataLayer.Interfaces;
 using NEF.Library.Business;
 using NEF.Library.Business.Interfaces;
-using NEF.Library.Utility;
 using SAHIBINDEN.DataLibrary.SqlDataLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using NEF.Library.Utility;
 
 namespace NEF.Library.IocManager
 {
@@ -35,6 +31,18 @@ namespace NEF.Library.IocManager
                 .InstancePerDependency();
 
             builder.Register<ILoyaltyPointBusiness>(c => new LoyaltyPointBusiness(c.Resolve<ILoyaltyPointDao>())).InstancePerDependency();
+
+            builder.Register<IQuoteDao>(p => new QuoteDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+                .InstancePerDependency();
+            builder.Register<IQuoteBusiness>(p => new QuoteBusiness(p.Resolve<IQuoteDao>())).InstancePerDependency();
+
+            builder.Register<IProjectDao>(p => new ProjectDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+                .InstancePerDependency();
+            builder.Register<IProjectBusiness>(p => new ProjectBusiness(p.Resolve<IProjectDao>())).InstancePerDependency();
+
+            builder.Register<ILoyaltySegmentConfigDao>(p => new LoyaltySegmentConfigDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+                .InstancePerDependency();
+            builder.Register<ILoyaltySegmentConfigBusiness>(p => new LoyaltySegmentConfigBusiness(p.Resolve<ILoyaltySegmentConfigDao>())).InstancePerDependency();
 
             return builder.Build();
         }

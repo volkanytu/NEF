@@ -17,13 +17,49 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("new_name")]
         public string Name { get; set; }
 
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_contactid")]
+        public EntityReferenceWrapper ContactId { get; set; }
+
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_quoteid")]
+        public EntityReferenceWrapper QuoteId { get; set; }
+
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_contractid")]
+        public EntityReferenceWrapper ContractId { get; set; }
+
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_projectid")]
+        public EntityReferenceWrapper ProjectId { get; set; }
+
         [CrmFieldDataType(CrmDataType.OPTIONSETVALUE)]
         [CrmFieldName("new_pointtype")]
         public OptionSetValueWrapper PointType { get; set; }
 
         [CrmFieldDataType(CrmDataType.OPTIONSETVALUE)]
-        [CrmFieldName("new_contactid")]
-        public EntityReferenceWrapper ContactId { get; set; }
+        [CrmFieldName("new_usagetype")]
+        public OptionSetValueWrapper UsageType { get; set; }
+
+        [CrmFieldDataType(CrmDataType.DECIMAL)]
+        [CrmFieldName("new_amount")]
+        public decimal? Amount { get; set; }
+
+        [CrmFieldDataType(CrmDataType.DATETIME)]
+        [CrmFieldName("new_expiredate")]
+        public DateTime? ExpireDate { get; set; }
+
+        [CrmFieldDataType(CrmDataType.STRING)]
+        [CrmFieldName("new_description")]
+        public string Description { get; set; }
+
+        [CrmFieldDataType(CrmDataType.OPTIONSETVALUE)]
+        [CrmFieldName("statuscode")]
+        public OptionSetValueWrapper Status { get; set; }
+
+        [CrmFieldDataType(CrmDataType.OPTIONSETVALUE)]
+        [CrmFieldName("statecode")]
+        public OptionSetValueWrapper State { get; set; }
 
         public enum StateCode
         {
@@ -37,9 +73,18 @@ namespace NEF.Library.Entities.CrmEntities
             PASSIVE = 2,
         }
 
+        public enum UsageTypeCode
+        {
+            CARD = 1,
+            CASH = 2
+        }
+
         public enum PointTypeCode
         {
-            CARD=100000000
+            EARNING = 1,
+            SPENDING = 2,
+            ADDING = 3,
+            LESSENING = 4
         }
     }
 }

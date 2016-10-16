@@ -24,19 +24,20 @@ namespace NEF.ConsoleApp.TestApplication
 
             ILoyaltyPointBusiness loyaltyBusiness = container.Resolve<ILoyaltyPointBusiness>();
 
-            LoyaltyPoint lp = new LoyaltyPoint()
-            {
-                Name = "123",
-                ContactId = new EntityReferenceWrapper()
-                {
-                    Id = new Guid(""),
-                    LogicalName = "contact"
-                },
-                PointType = LoyaltyPoint.PointTypeCode.CARD.ToOptionSetValueWrapper()
-            };
+            LoyaltyPoint p = loyaltyBusiness.Get(new Guid("117436E3-8393-E611-8103-005056A60603"));
+            //LoyaltyPoint lp = new LoyaltyPoint()
+            //{
+            //    Name = "123",
+            //    ContactId = new EntityReferenceWrapper()
+            //    {
+            //        Id = new Guid(""),
+            //        LogicalName = "contact"
+            //    },
+            //    PointType = LoyaltyPoint.PointTypeCode.CARD.ToOptionSetValueWrapper()
+            //};
 
 
-            Guid id = loyaltyBusiness.Insert(lp);
+            //Guid id = loyaltyBusiness.Insert(lp);
 
 
         }

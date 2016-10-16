@@ -6,7 +6,7 @@ namespace NEF.DataLibrary.SqlDataLayer.Interfaces
     public interface ILoyaltyPointDao
     {
         LoyaltyPoint Get(Guid id);
-        Guid Insert(LoyaltyPoint accountPhone);
-        void Update(LoyaltyPoint accountPhone);
+        Guid Insert(LoyaltyPoint loyaltyPoint);
+        void Update(LoyaltyPoint loyaltyPoint);
     }
 }

@@ -22,22 +22,22 @@ namespace NEF.DataLibrary.SqlDataLayer
             _sqlAccess = sqlAccess;
         }
 
-        public Guid Insert(LoyaltyPoint accountPhone)
+        public Guid Insert(LoyaltyPoint loyaltyPoint)
         {
             IOrganizationService service = _msCrmAccess.GetCrmService();
 
-            Entity entity = accountPhone.ToCrmEntity();
+            Entity entity = loyaltyPoint.ToCrmEntity();
 
             Guid id = service.Create(entity);
 
             return id;
         }
 
-        public void Update(LoyaltyPoint accountPhone)
+        public void Update(LoyaltyPoint loyaltyPoint)
         {
             IOrganizationService service = _msCrmAccess.GetCrmService();
 
-            Entity entity = accountPhone.ToCrmEntity();
+            Entity entity = loyaltyPoint.ToCrmEntity();
 
             service.Update(entity);
         }
