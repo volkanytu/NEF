@@ -31,5 +31,10 @@ namespace NEF.Library.Business
         {
             return _loyaltyPointDao.Get(id);
         }
+
+        public List<LoyaltyPoint> GetPointsWithContacts()
+        {
+            return _loyaltyPointDao.GetPointsWithContacts();
+        }
     }
 }

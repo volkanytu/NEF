@@ -50,5 +50,12 @@ namespace NEF.DataLibrary.SqlDataLayer
 
             return dt.ToList<LoyaltyPoint>().FirstOrDefault();
         }
+
+        public List<LoyaltyPoint> GetPointsWithContacts()
+        {
+            DataTable dt = _sqlAccess.GetDataTable(LoyaltyPointQueries.GET_TOTAL_POINT_WITH_CONTACT);
+
+            return dt.ToList<LoyaltyPoint>();
+        }
     }
 }

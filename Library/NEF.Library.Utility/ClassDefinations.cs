@@ -762,6 +762,8 @@ namespace NEF.Library.Utility
         public Guid ProjectId { get; set; }
         public string Name { get; set; }
         public bool IsProjectGyo { get; set; }
+        public decimal? Ratio { get; set; }
+        public DateTime? ExpireDate { get; set; }
     }
 
     public class Block

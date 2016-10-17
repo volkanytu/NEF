@@ -1112,6 +1112,20 @@ namespace NEF.Plugins.QuotePlugIn
 
                         #endregion | SENET NUMARASI OLUŞTUR |
                     }
+                    else if (_quoteStatus == QuoteStatus.Sözleşmeİmzalandı) //Added by Kemal Burak Yılmaz
+                    {
+                        #region | CREATE LOYALTY POINT |
+                        //17.10.2016
+
+                        Entity loyaltyPointEntity = new Entity("new_loyaltypoint");
+                        loyaltyPointEntity["new_contactid"] = customer;
+                        loyaltyPointEntity["new_quoteid"] = new EntityReference("quote", entity.Id);
+                        loyaltyPointEntity["new_projectid"] = new EntityReference("new_project", projectId.Id);
+                        loyaltyPointEntity["new_pointtype"] = new OptionSetValue(1); //Kazanım
+                        service.Create(loyaltyPointEntity);
+
+                        #endregion
+                    }
                     else if (_quoteStatus == QuoteStatus.MuhasebeyeAktarıldı)
                     {
                         //SQL UPDATE YAPILDI. COMMON:SVC KULLANILARAK

@@ -20,7 +20,7 @@ namespace NEF.ConsoleApp.TestApplication
     {
         static void Main(string[] args)
         {
-            IContainer container = IocContainerBuilder.GetTestIocContainer();
+            IContainer container = IocContainerBuilder.GetIocContainer();
 
             ILoyaltyPointBusiness loyaltyBusiness = container.Resolve<ILoyaltyPointBusiness>();
 

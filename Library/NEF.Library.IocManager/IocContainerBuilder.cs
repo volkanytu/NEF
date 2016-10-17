@@ -13,7 +13,7 @@ namespace NEF.Library.IocManager
         private const string SQL_ACCESS_CRM = "SQL_ACCESS_CRM";
         private const string SQL_ACCESS_LOGO = "SQL_ACCESS_LOGO";
 
-        public static IContainer GetTestIocContainer()
+        public static IContainer GetIocContainer()
         {
             ContainerBuilder builder = new ContainerBuilder();
 
