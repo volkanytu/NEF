@@ -15,8 +15,8 @@ namespace NEF.Library.Constants.SqlQueries
 	                                                    ,LP.new_contactidName AS ContactIdName
 	                                                    ,LP.new_quoteid AS QuoteId
 	                                                    ,LP.new_quoteidName AS QuoteIdName
-	                                                    ,LP.new_contractid AS ContractId
-	                                                    ,LP.new_contractidName AS ContractIdName
+	                                                    ,LP.new_paymentid AS PaymentId
+	                                                    ,LP.new_paymentidName AS PaymentIdName
 	                                                    ,LP.new_projectid AS ProjectId
 	                                                    ,LP.new_projectidName AS ProjectIdName
 	                                                    ,LP.new_pointtype AS PointType

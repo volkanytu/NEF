@@ -26,8 +26,8 @@ namespace NEF.Library.Entities.CrmEntities
         public EntityReferenceWrapper QuoteId { get; set; }
 
         [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
-        [CrmFieldName("new_contractid")]
-        public EntityReferenceWrapper ContractId { get; set; }
+        [CrmFieldName("new_paymentid")]
+        public EntityReferenceWrapper PaymentId { get; set; }
 
         [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
         [CrmFieldName("new_projectid")]
