@@ -53,6 +53,7 @@ namespace NEF.Plugins.QuotePlugIn
                 EntityReference currency = preImage.Attributes.Contains("transactioncurrencyid") && preImage["transactioncurrencyid"] != null ? (EntityReference)preImage["transactioncurrencyid"] : null;
                 EntityReference secondCustomer = entity.Attributes.Contains("new_secondcontactid") && entity["new_secondcontactid"] != null ? (EntityReference)entity["new_secondcontactid"] : preImage.Attributes.Contains("new_secondcontactid") && preImage["new_secondcontactid"] != null ? (EntityReference)preImage["new_secondcontactid"] : null;
                 EntityReference projectId = entity.Attributes.Contains("new_projectid") && entity["new_projectid"] != null ? (EntityReference)entity["new_projectid"] : preImage.Attributes.Contains("new_projectid") && preImage["new_projectid"] != null ? (EntityReference)preImage["new_projectid"] : null;
+                EntityReference referenceCustomer = entity.Attributes.Contains("new_referencecontactid") && entity["new_referencecontactid"] != null ? (EntityReference)entity["new_referencecontactid"] : preImage.Attributes.Contains("new_referencecontactid") && preImage["new_referencecontactid"] != null ? (EntityReference)preImage["new_referencecontactid"] : null;
 
                 #region | QUOTE STATUS PROCESS |
                 //Developed By Kemal Burak YILMAZ
@@ -1116,14 +1117,17 @@ namespace NEF.Plugins.QuotePlugIn
                     {
                         #region | CREATE LOYALTY POINT |
                         //17.10.2016
+                        if (referenceCustomer != null)
+                        {
+                            Entity loyaltyPointEntity = new Entity("new_loyaltypoint");
+                            loyaltyPointEntity["new_contactid"] = referenceCustomer;
+                            loyaltyPointEntity["new_quoteid"] = entity.ToEntityReference();
+                            loyaltyPointEntity["new_projectid"] = new EntityReference("new_project", projectId.Id);
+                            loyaltyPointEntity["new_pointtype"] = new OptionSetValue(1); //Kazanım
+                            loyaltyPointEntity["new_usagetype"] = entity.Contains("new_usagetype") ? entity["new_usagetype"] : null;
+                            service.Create(loyaltyPointEntity);
+                        }
 
-                        Entity loyaltyPointEntity = new Entity("new_loyaltypoint");
-                        loyaltyPointEntity["new_contactid"] = customer;
-                        loyaltyPointEntity["new_quoteid"] = entity.ToEntityReference();
-                        loyaltyPointEntity["new_projectid"] = new EntityReference("new_project", projectId.Id);
-                        loyaltyPointEntity["new_pointtype"] = new OptionSetValue(1); //Kazanım
-                        loyaltyPointEntity["new_usagetype"] = entity.Contains("new_usagetype") ? entity["new_usagetype"] : null;
-                        service.Create(loyaltyPointEntity);
 
                         #endregion
                     }

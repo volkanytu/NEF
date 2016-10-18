@@ -38,58 +38,62 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
 
                 Entity entity = (Entity)context.InputParameters["Target"];
 
-                #region | GET PROJECT DETAIL |
-                Project project = null;
-                if (entity.Attributes.Contains("new_projectid") && entity["new_projectid"] != null)
+                if (entity.Attributes.Contains("new_contactid") && entity["new_contactid"] != null)
                 {
-                    EntityReference projectId = (EntityReference)entity["new_projectid"];
+                    #region | GET PROJECT DETAIL |
+                    Project project = null;
+                    if (entity.Attributes.Contains("new_projectid") && entity["new_projectid"] != null)
+                    {
+                        EntityReference projectId = (EntityReference)entity["new_projectid"];
 
-                    MsCrmResultObject projectResultObject = ProjectHelper.GetProjectDetail(projectId.Id, sda);
-                    if (projectResultObject.Success)
-                    {
-                        project = (Project)projectResultObject.ReturnObject;
+                        MsCrmResultObject projectResultObject = ProjectHelper.GetProjectDetail(projectId.Id, sda);
+                        if (projectResultObject.Success)
+                        {
+                            project = (Project)projectResultObject.ReturnObject;
+                        }
+                        else
+                        {
+                            throw new Exception(projectResultObject.Result);
+                        }
                     }
-                    else
+                    #endregion
+
+                    #region | GET SALES AMOUNT |
+                    decimal? salesAmount = null;
+                    if (entity.Attributes.Contains("new_quoteid") && entity["new_quoteid"] != null)
                     {
-                        throw new Exception(projectResultObject.Result);
+                        EntityReference quoteId = (EntityReference)entity["new_quoteid"];
+
+                        entity["new_name"] = quoteId.Name;
+
+                        MsCrmResultObject salesAmountResultObject = ProjectHelper.GetTotalSalesAmount(quoteId.Id, sda);
+                        if (salesAmountResultObject.Success)
+                        {
+                            salesAmount = (decimal)salesAmountResultObject.ReturnObject;
+                        }
+                        else
+                        {
+                            throw new Exception(salesAmountResultObject.Result);
+                        }
+                    }
+                    #endregion
+
+                    if (project != null)
+                    {
+                        if (project.Ratio != null && salesAmount != null)
+                        {
+                            decimal pointAmount = (decimal)((salesAmount * project.Ratio));
+                            entity["new_amount"] = pointAmount;
+                        }
+
+                        if (project.ExpireDate != null)
+                        {
+                            entity["new_expiredate"] = (DateTime)project.ExpireDate;
+                        }
                     }
                 }
-                #endregion
-
-                #region | GET SALES AMOUNT |
-                decimal? salesAmount = null;
-                if (entity.Attributes.Contains("new_quoteid") && entity["new_quoteid"] != null)
-                {
-                    EntityReference quoteId = (EntityReference)entity["new_quoteid"];
-
-                    entity["new_name"] = quoteId.Name;
-
-                    MsCrmResultObject salesAmountResultObject = ProjectHelper.GetTotalSalesAmount(quoteId.Id, sda);
-                    if (salesAmountResultObject.Success)
-                    {
-                        salesAmount = (decimal)salesAmountResultObject.ReturnObject;
-                    }
-                    else
-                    {
-                        throw new Exception(salesAmountResultObject.Result);
-                    }
-                }
-                #endregion
 
 
-                if (project != null)
-                {
-                    if (project.Ratio != null && salesAmount != null)
-                    {
-                        decimal pointAmount = (decimal)((salesAmount * project.Ratio));
-                        entity["new_amount"] = pointAmount;
-                    }
-
-                    if (project.ExpireDate != null)
-                    {
-                        entity["new_expiredate"] = (DateTime)project.ExpireDate;
-                    }
-                }
             }
             catch (Exception ex)
             {
