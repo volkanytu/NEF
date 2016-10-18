@@ -86,13 +86,13 @@ namespace NEF.Library.IocManager
                 , c.ResolveNamed<ISqlAccess>(SQL_ACCESS_CRM)))
                 .InstancePerDependency();
 
-            builder.Register<IQuoteDao>(p => new QuoteDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+            builder.Register<IQuoteDao>(p => new QuoteDao(p.Resolve<IMsCrmAccess>(), p.ResolveNamed<ISqlAccess>(SQL_ACCESS_CRM)))
                 .InstancePerDependency();
 
-            builder.Register<IProjectDao>(p => new ProjectDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+            builder.Register<IProjectDao>(p => new ProjectDao(p.Resolve<IMsCrmAccess>(), p.ResolveNamed<ISqlAccess>(SQL_ACCESS_CRM)))
                 .InstancePerDependency();
 
-            builder.Register<ILoyaltySegmentConfigDao>(p => new LoyaltySegmentConfigDao(p.Resolve<IMsCrmAccess>(), p.Resolve<ISqlAccess>()))
+            builder.Register<ILoyaltySegmentConfigDao>(p => new LoyaltySegmentConfigDao(p.Resolve<IMsCrmAccess>(), p.ResolveNamed<ISqlAccess>(SQL_ACCESS_CRM)))
                 .InstancePerDependency();
             #endregion
 

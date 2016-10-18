@@ -8,7 +8,7 @@ namespace NEF.Library.Entities.CustomEntities
 {
     public class LoyaltySegment
     {
-        public EntityReferenceWrapper ContactId { get; set; }
+        public Guid ContactId { get; set; }
         public decimal TotalPoint { get; set; }
         public Contact.LoyaltySegmentCode? Segment { get; set; }
     }

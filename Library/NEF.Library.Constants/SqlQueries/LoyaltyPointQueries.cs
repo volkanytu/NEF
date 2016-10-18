@@ -36,7 +36,6 @@ namespace NEF.Library.Constants.SqlQueries
         public const string GET_TOTAL_POINT_WITH_CONTACT = @"DECLARE @EndDate DATETIME = GETUTCDATE()
                             SELECT
 	                            LP.new_contactid AS ContactId
-                                'contact' AS ContactIdTypeName
 	                            ,SUM(LP.new_amount) AS TotalPoint
                             FROM
 	                            new_loyaltypoint LP WITH (NOLOCK)
@@ -46,7 +45,7 @@ namespace NEF.Library.Constants.SqlQueries
 	                            LP.new_expiredate > @EndDate
                                 AND
                                 LP.new_pointtype = 1 --KAZANIM
-                            GROUP BY LP.new_contactid,'contact'";
+                            GROUP BY LP.new_contactid";
 
         #endregion
     }

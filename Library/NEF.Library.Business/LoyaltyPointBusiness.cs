@@ -41,9 +41,16 @@ namespace NEF.Library.Business
 
         public void SetContactLoyaltySegment(List<LoyaltySegment> loyaltySegmentList, List<LoyaltySegmentConfig> loyaltySegmentConfigList)
         {
-            loyaltySegmentList.Select(sl => sl.Segment = loyaltySegmentConfigList
-                .Where(conf => conf.MinValue < sl.TotalPoint && conf.MaxValue > sl.TotalPoint)
-                .FirstOrDefault().LoyaltySegment.ToEnum<Contact.LoyaltySegmentCode>());
+            foreach (LoyaltySegment loyaltySegment in loyaltySegmentList)
+            {
+                loyaltySegment.Segment =
+                    loyaltySegmentConfigList
+                        .FirstOrDefault(p => p.MinValue < loyaltySegment.TotalPoint && p.MaxValue > loyaltySegment.TotalPoint)
+                        .LoyaltySegment.ToEnum<Contact.LoyaltySegmentCode>();
+            }
+            //loyaltySegmentList.Select(sl => sl.Segment = loyaltySegmentConfigList
+            //    .Where(conf => conf.MinValue < sl.TotalPoint && conf.MaxValue > sl.TotalPoint)
+            //    .FirstOrDefault().LoyaltySegment.ToEnum<Contact.LoyaltySegmentCode>());
         }
     }
 }

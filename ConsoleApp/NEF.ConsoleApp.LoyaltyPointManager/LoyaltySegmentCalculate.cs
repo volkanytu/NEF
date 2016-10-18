@@ -35,7 +35,7 @@ namespace NEF.ConsoleApp.LoyaltyPointManager
 
             foreach (var segment in pointsWithContact)
             {
-                _contactBusiness.SetLoyaltySegment(segment.ContactId.Id, segment.Segment);
+                _contactBusiness.SetLoyaltySegment(segment.ContactId, segment.Segment);
             }
         }
     }
