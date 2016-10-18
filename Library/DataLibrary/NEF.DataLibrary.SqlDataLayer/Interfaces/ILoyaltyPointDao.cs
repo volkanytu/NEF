@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NEF.Library.Entities.CrmEntities;
+using NEF.Library.Entities.CustomEntities;
 
 namespace NEF.DataLibrary.SqlDataLayer.Interfaces
 {
@@ -9,6 +10,6 @@ namespace NEF.DataLibrary.SqlDataLayer.Interfaces
         LoyaltyPoint Get(Guid id);
         Guid Insert(LoyaltyPoint loyaltyPoint);
         void Update(LoyaltyPoint loyaltyPoint);
-        List<LoyaltyPoint> GetPointsWithContacts();
+        List<LoyaltySegment> GetPointsWithContacts();
     }
 }

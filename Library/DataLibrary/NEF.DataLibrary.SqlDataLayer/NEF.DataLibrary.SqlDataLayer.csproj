@@ -62,7 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactDao.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Interfaces\IContactDao.cs" />
     <Compile Include="Interfaces\ILoyaltyPointDao.cs" />
     <Compile Include="Interfaces\ILoyaltySegmentConfigDao.cs" />
     <Compile Include="Interfaces\IMsCrmAccess.cs" />

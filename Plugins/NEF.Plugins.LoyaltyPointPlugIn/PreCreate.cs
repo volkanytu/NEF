@@ -81,7 +81,7 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
                 {
                     if (project.Ratio != null && salesAmount != null)
                     {
-                        decimal pointAmount = (decimal)((salesAmount * project.Ratio) / 100);
+                        decimal pointAmount = (decimal)((salesAmount * project.Ratio));
                         entity["new_amount"] = pointAmount;
                     }
 

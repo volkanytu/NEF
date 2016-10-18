@@ -10,26 +10,31 @@ namespace NEF.Library.Business
 {
     public class LoyaltySegmentConfigBusiness : ILoyaltySegmentConfigBusiness
     {
-         private ILoyaltySegmentConfigDao _loyaltySegmentConfigDao;
+        private ILoyaltySegmentConfigDao _loyaltySegmentConfigDao;
 
-         public LoyaltySegmentConfigBusiness(ILoyaltySegmentConfigDao loyaltySegmentConfigDao)
+        public LoyaltySegmentConfigBusiness(ILoyaltySegmentConfigDao loyaltySegmentConfigDao)
         {
-            _loyaltySegmentConfigDao = _loyaltySegmentConfigDao;
+            _loyaltySegmentConfigDao = loyaltySegmentConfigDao;
         }
 
-         public Guid Insert(LoyaltySegmentConfig loyaltySegmentConfig)
+        public Guid Insert(LoyaltySegmentConfig loyaltySegmentConfig)
         {
             return _loyaltySegmentConfigDao.Insert(loyaltySegmentConfig);
         }
 
-         public void Update(LoyaltySegmentConfig loyaltySegmentConfig)
+        public void Update(LoyaltySegmentConfig loyaltySegmentConfig)
         {
             _loyaltySegmentConfigDao.Update(loyaltySegmentConfig);
         }
 
-         public LoyaltySegmentConfig Get(Guid id)
+        public LoyaltySegmentConfig Get(Guid id)
         {
             return _loyaltySegmentConfigDao.Get(id);
+        }
+
+        public List<LoyaltySegmentConfig> GetList()
+        {
+            return _loyaltySegmentConfigDao.GetList();
         }
     }
 }

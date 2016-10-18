@@ -46,9 +46,16 @@ namespace NEF.DataLibrary.SqlDataLayer
         {
             SqlParameter[] parameters = { new SqlParameter("@id", id) };
 
-            DataTable dt = _sqlAccess.GetDataTable(LoyaltySegmentConfigQueries.ANY_QUERY, parameters);
+            DataTable dt = _sqlAccess.GetDataTable(LoyaltySegmentConfigQueries.GET_CONFIG, parameters);
 
             return dt.ToList<LoyaltySegmentConfig>().FirstOrDefault();
+        }
+
+        public List<LoyaltySegmentConfig> GetList()
+        {
+            DataTable dt = _sqlAccess.GetDataTable(LoyaltySegmentConfigQueries.GET_LIST);
+
+            return dt.ToList<LoyaltySegmentConfig>();
         }
     }
 }

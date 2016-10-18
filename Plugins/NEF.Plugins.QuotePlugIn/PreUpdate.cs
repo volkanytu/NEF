@@ -1119,9 +1119,10 @@ namespace NEF.Plugins.QuotePlugIn
 
                         Entity loyaltyPointEntity = new Entity("new_loyaltypoint");
                         loyaltyPointEntity["new_contactid"] = customer;
-                        loyaltyPointEntity["new_quoteid"] = new EntityReference("quote", entity.Id);
+                        loyaltyPointEntity["new_quoteid"] = entity.ToEntityReference();
                         loyaltyPointEntity["new_projectid"] = new EntityReference("new_project", projectId.Id);
                         loyaltyPointEntity["new_pointtype"] = new OptionSetValue(1); //Kazanım
+                        loyaltyPointEntity["new_usagetype"] = entity.Contains("new_usagetype") ? entity["new_usagetype"] : null;
                         service.Create(loyaltyPointEntity);
 
                         #endregion

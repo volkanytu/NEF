@@ -7,6 +7,12 @@ namespace NEF.Library.Constants.SqlQueries
 {
     public class LoyaltySegmentConfigQueries
     {
-        public const string ANY_QUERY = @"";
+        #region | GET_CONFIG |
+        public const string GET_CONFIG = @""; 
+        #endregion
+
+        #region | GET_LIST |
+        public const string GET_LIST = @""; 
+        #endregion
     }
 }

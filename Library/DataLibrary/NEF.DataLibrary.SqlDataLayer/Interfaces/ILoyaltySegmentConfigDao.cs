@@ -11,5 +11,6 @@ namespace NEF.DataLibrary.SqlDataLayer.Interfaces
         LoyaltySegmentConfig Get(Guid id);
         Guid Insert(LoyaltySegmentConfig loyaltySegmentConfig);
         void Update(LoyaltySegmentConfig loyaltySegmentConfig);
+        List<LoyaltySegmentConfig> GetList();
     }
 }

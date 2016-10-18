@@ -82,6 +82,7 @@
     <Compile Include="AnnotationHelper.cs" />
     <Compile Include="BuildingsManagementHelper.cs" />
     <Compile Include="ChannelOfAwarenessHelper.cs" />
+    <Compile Include="ContactBusiness.cs" />
     <Compile Include="ContactHelper.cs" />
     <Compile Include="ContractCoverHelper.cs" />
     <Compile Include="DiscountProtocolHelper.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="DocumentMerge.cs" />
     <Compile Include="FinancialAccountHelper.cs" />
     <Compile Include="GeneralHelper.cs" />
+    <Compile Include="Interfaces\IContactBusiness.cs" />
     <Compile Include="Interfaces\ILoyaltyPointBusiness.cs" />
     <Compile Include="InterestedProjectHelper.cs" />
     <Compile Include="InterestProductHelper.cs" />

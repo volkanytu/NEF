@@ -13,14 +13,16 @@ namespace NEF.ConsoleApp.LoyaltyPointManager
     {
         static void Main(string[] args)
         {
-            IContainer container = IocContainerBuilder.GetIocContainer();
+            ContainerBuilder builder = IocContainerBuilder.GetIocContainerBuilder();
 
-            ILoyaltyPointBusiness loyaltyBusiness = container.Resolve<ILoyaltyPointBusiness>();
-            List<LoyaltyPoint> loyaltyPoints = loyaltyBusiness.GetPointsWithContacts();
+            builder.Register<ILoyaltySegmentCalculate>(p => new LoyaltySegmentCalculate(p.Resolve<ILoyaltyPointBusiness>()
+                , p.Resolve<ILoyaltySegmentConfigBusiness>()
+                , p.Resolve<IContactBusiness>())).InstancePerDependency();
 
-            //Burada config ayarları çekilecek
-            //müşteriler üzerinde hangi aralığa girdiklerine karar verilip set edilecek
+            IContainer container = builder.Build();
 
+            ILoyaltySegmentCalculate calculate = container.Resolve<ILoyaltySegmentCalculate>();
+            calculate.DoWork();
         }
     }
 }

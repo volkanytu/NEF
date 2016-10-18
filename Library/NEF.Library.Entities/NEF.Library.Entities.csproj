@@ -47,19 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrmEntities\Contact.cs" />
     <Compile Include="CrmEntities\EntityReferenceWrapper.cs" />
     <Compile Include="CrmEntities\LoyaltyPoint.cs" />
     <Compile Include="CrmEntities\LoyaltySegmentConfig.cs" />
     <Compile Include="CrmEntities\OptionSetValueWrapper.cs" />
     <Compile Include="CrmEntities\CustomAttributes.cs" />
     <Compile Include="CrmEntities\Quote.cs" />
+    <Compile Include="CustomEntities\LoyaltySegment.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="CrmEntities\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomEntities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="NEF.Library.Entities.snk" />
   </ItemGroup>

@@ -33,17 +33,20 @@ namespace NEF.Library.Constants.SqlQueries
 
         #region | GET_TOTAL_POINT_WITH_CONTACT |
 
-        public const string GET_TOTAL_POINT_WITH_CONTACT = @"DECLARE @EndDate DATETIME = GETDATE()
+        public const string GET_TOTAL_POINT_WITH_CONTACT = @"DECLARE @EndDate DATETIME = GETUTCDATE()
                             SELECT
-	                            LP.new_contactid
-	                            ,SUM(case when LP.new_pointtype = 1 then LP.new_amount else (LP.new_amount * -1) end) AS Amount
+	                            LP.new_contactid AS ContactId
+                                'contact' AS ContactIdTypeName
+	                            ,SUM(LP.new_amount) AS TotalPoint
                             FROM
 	                            new_loyaltypoint LP WITH (NOLOCK)
                             WHERE
 	                            LP.StateCode = 0
 	                            AND
 	                            LP.new_expiredate > @EndDate
-                            GROUP BY LP.new_contactid";
+                                AND
+                                LP.new_pointtype = 1 --KAZANIM
+                            GROUP BY LP.new_contactid,'contact'";
 
         #endregion
     }

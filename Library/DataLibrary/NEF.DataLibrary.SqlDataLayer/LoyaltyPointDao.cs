@@ -2,6 +2,7 @@
 using NEF.DataLibrary.SqlDataLayer.Interfaces;
 using NEF.Library.Constants.SqlQueries;
 using NEF.Library.Entities.CrmEntities;
+using NEF.Library.Entities.CustomEntities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -51,11 +52,11 @@ namespace NEF.DataLibrary.SqlDataLayer
             return dt.ToList<LoyaltyPoint>().FirstOrDefault();
         }
 
-        public List<LoyaltyPoint> GetPointsWithContacts()
+        public List<LoyaltySegment> GetPointsWithContacts()
         {
             DataTable dt = _sqlAccess.GetDataTable(LoyaltyPointQueries.GET_TOTAL_POINT_WITH_CONTACT);
 
-            return dt.ToList<LoyaltyPoint>();
+            return dt.ToList<LoyaltySegment>();
         }
     }
 }
