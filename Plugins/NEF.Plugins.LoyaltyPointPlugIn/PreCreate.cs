@@ -50,6 +50,7 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
                         if (projectResultObject.Success)
                         {
                             project = (Project)projectResultObject.ReturnObject;
+                            entity["new_name"] = project.Name;
                         }
                         else
                         {
@@ -63,8 +64,6 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
                     if (entity.Attributes.Contains("new_quoteid") && entity["new_quoteid"] != null)
                     {
                         EntityReference quoteId = (EntityReference)entity["new_quoteid"];
-
-                        entity["new_name"] = quoteId.Name;
 
                         MsCrmResultObject salesAmountResultObject = ProjectHelper.GetTotalSalesAmount(quoteId.Id, sda);
                         if (salesAmountResultObject.Success)

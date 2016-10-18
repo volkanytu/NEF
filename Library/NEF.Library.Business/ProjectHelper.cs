@@ -16,6 +16,7 @@ namespace NEF.Library.Business
             {
                 string query = @"SELECT
 	                                P.new_projectId AS Id
+                                    ,P.new_name AS Name
 	                                ,P.new_loyaltypointratio AS Ratio
 	                                ,P.new_loyaltypointexpiredate AS ExpireDate 
                                 FROM
@@ -37,6 +38,11 @@ namespace NEF.Library.Business
                     if (dt.Rows[0]["ExpireDate"] != DBNull.Value)
                     {
                         project.ExpireDate = (DateTime)dt.Rows[0]["ExpireDate"];
+                    }
+
+                    if (dt.Rows[0]["Name"] != DBNull.Value)
+                    {
+                        project.Name = dt.Rows[0]["Name"].ToString();
                     }
 
                     returnValue.Success = true;
@@ -67,11 +73,13 @@ namespace NEF.Library.Business
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     returnValue.ReturnObject = (decimal) dt.Rows[0]["TotalAmount"];
+                    returnValue.Success = true;
                 }
             }
             catch (Exception ex)
             {
-               
+                returnValue.Success = false;
+                returnValue.Result = ex.Message;
             }
             return returnValue;
         }

@@ -138,6 +138,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\NEF publishWebServices.pubxml" />
     <None Include="Properties\PublishProfiles\volkan.pubxml" />
+    <None Include="Properties\PublishProfiles\volkanytu.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

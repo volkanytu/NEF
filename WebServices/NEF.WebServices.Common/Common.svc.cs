@@ -251,6 +251,48 @@ namespace NEF.WebServices.Common
 
                 sda.ExecuteNonQuery(string.Format(sqlQuery, quoteId), new SqlParameter[] { new SqlParameter("StatusCode", (int)QuoteStatus.Sözleşmeİmzalandı) });
 
+                #region | LOYALTY PROCESS |
+
+                string getQuery = @"SELECT 
+	                                    new_referencecontactid,
+	                                    new_projectid,
+	                                    new_usagetype  
+                                    FROM 
+	                                    Quote 
+                                    WHERE QuoteId = '{0}'";
+
+                DataTable dt = sda.getDataTable(string.Format(getQuery, quoteId));
+
+                Guid? referenceContact = null;
+                if (dt.Rows[0]["new_referencecontactid"] != DBNull.Value)
+                {
+                    referenceContact = (Guid) dt.Rows[0]["new_referencecontactid"];
+                }
+
+                Guid? project = null;
+                if (dt.Rows[0]["new_projectid"] != DBNull.Value)
+                {
+                    project = (Guid)dt.Rows[0]["new_projectid"];
+                }
+
+                int? usageType = null;
+                if (dt.Rows[0]["new_usagetype"] != DBNull.Value)
+                {
+                    usageType = (int)dt.Rows[0]["new_usagetype"];
+                }
+
+                if (referenceContact != null && project != null)
+                {
+                    Entity loyaltyPointEntity = new Entity("new_loyaltypoint");
+                    loyaltyPointEntity["new_contactid"] = new EntityReference("contact", (Guid)referenceContact);
+                    loyaltyPointEntity["new_quoteid"] = new EntityReference("quote", new Guid(quoteId));
+                    loyaltyPointEntity["new_projectid"] = new EntityReference("new_project", (Guid)project); ;
+                    loyaltyPointEntity["new_pointtype"] = new OptionSetValue(1); //Kazanım
+                    loyaltyPointEntity["new_usagetype"] = usageType != null ? new OptionSetValue((int)usageType) : null;
+                    service.Create(loyaltyPointEntity);
+                }
+                #endregion
+
                 result = "true";
             }
             catch (Exception)
