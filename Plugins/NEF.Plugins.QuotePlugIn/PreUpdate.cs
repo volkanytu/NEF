@@ -53,7 +53,7 @@ namespace NEF.Plugins.QuotePlugIn
                 EntityReference currency = preImage.Attributes.Contains("transactioncurrencyid") && preImage["transactioncurrencyid"] != null ? (EntityReference)preImage["transactioncurrencyid"] : null;
                 EntityReference secondCustomer = entity.Attributes.Contains("new_secondcontactid") && entity["new_secondcontactid"] != null ? (EntityReference)entity["new_secondcontactid"] : preImage.Attributes.Contains("new_secondcontactid") && preImage["new_secondcontactid"] != null ? (EntityReference)preImage["new_secondcontactid"] : null;
                 EntityReference projectId = entity.Attributes.Contains("new_projectid") && entity["new_projectid"] != null ? (EntityReference)entity["new_projectid"] : preImage.Attributes.Contains("new_projectid") && preImage["new_projectid"] != null ? (EntityReference)preImage["new_projectid"] : null;
-                EntityReference referenceCustomer = entity.Attributes.Contains("new_referencecontactid") && entity["new_referencecontactid"] != null ? (EntityReference)entity["new_referencecontactid"] : preImage.Attributes.Contains("new_referencecontactid") && preImage["new_referencecontactid"] != null ? (EntityReference)preImage["new_referencecontactid"] : null;
+                EntityReference referenceCustomer = entity.Attributes.Contains("new_referencecontactid") && entity["new_referencecontactid"] != null ? (EntityReference)entity["new_referencecontactid"] : preImage.Attributes.Contains("new_referencecontactid") && preImage["new_referencecontactid"] != null ? (EntityReference)preImage["new_referencecontactid"] : null; 
 
                 #region | QUOTE STATUS PROCESS |
                 //Developed By Kemal Burak YILMAZ
