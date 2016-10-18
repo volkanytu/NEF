@@ -194,9 +194,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEF.Library.Constants", "Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEF.ConsoleApp.TestApplication", "ConsoleApp\NEF.ConsoleApp.TestApplication\NEF.ConsoleApp.TestApplication.csproj", "{ADAE41CD-4EF5-4283-8997-988C2023D208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEF.Plugins.LoyaltyPointPlugIn", "Plugins\NEF.Plugins.LoyaltyPointPlugIn\NEF.Plugins.LoyaltyPointPlugIn.csproj", "{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEF.ConsoleApp.LoyaltyPointManager", "ConsoleApp\NEF.ConsoleApp.LoyaltyPointManager\NEF.ConsoleApp.LoyaltyPointManager.csproj", "{E7CCE72F-208A-4622-8570-3336ACD143D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEF.Plugins.LoyaltyPointPlugIn", "Plugins\NEF.Plugins.LoyaltyPointPlugIn\NEF.Plugins.LoyaltyPointPlugIn.csproj", "{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -619,18 +619,18 @@ Global
 		{ADAE41CD-4EF5-4283-8997-988C2023D208}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{ADAE41CD-4EF5-4283-8997-988C2023D208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADAE41CD-4EF5-4283-8997-988C2023D208}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Development|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Development|Any CPU.Build.0 = Debug|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Development|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CCE72F-208A-4622-8570-3336ACD143D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EDA03E-0ED9-45AF-B3F3-49C451B4E4A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
