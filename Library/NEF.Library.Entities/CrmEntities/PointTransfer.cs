@@ -5,11 +5,11 @@ using System.Text;
 
 namespace NEF.Library.Entities.CrmEntities
 {
-    [CrmSchemaName("new_pointransfer")]
+    [CrmSchemaName("new_pointtransfer")]
     public class PointTransfer
     {
         [CrmFieldDataType(CrmDataType.UNIQUEIDENTIFIER)]
-        [CrmFieldName("new_pointransferid")]
+        [CrmFieldName("new_pointtransferid")]
         public Guid Id { get; set; }
 
         [CrmFieldDataType(CrmDataType.STRING)]
@@ -24,7 +24,7 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("new_targetcontactid")]
         public EntityReferenceWrapper TargetContactId { get; set; }
 
-        public const string LOGICAL_NAME = "new_pointransfer";
+        public const string LOGICAL_NAME = "new_pointtransfer";
         public const string SOURCE_CONTACT_ID = "new_sourcecontactid";
         public const string TARGET_CONTACT_ID = "new_targetcontactid";
 
