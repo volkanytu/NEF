@@ -97,9 +97,9 @@ namespace NEF.Library.Entities.CrmEntities
         {
             ACTIVE = 1,
             PASSIVE = 2,
-            WAITING_CONFIRMED,
-            CONFIRMED,
-            REFUSED,
+            WAITING_CONFIRMED=100000000,
+            CONFIRMED=100000001,
+            REFUSED = 100000002,
         }
 
         public enum UsageTypeCode

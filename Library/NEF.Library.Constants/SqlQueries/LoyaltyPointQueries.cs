@@ -44,7 +44,7 @@ namespace NEF.Library.Constants.SqlQueries
                             WHERE
 	                            LP.StateCode = 0
 	                            AND
-	                            LP.StatusCode = 4 --Onaylandı
+	                            LP.StatusCode = 100000001 --Onaylandı
                                 AND
 	                            LP.new_expiredate > @EndDate
                                 AND

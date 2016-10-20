@@ -37,6 +37,11 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
 
                 Entity entity = (Entity)context.InputParameters["Target"];
 
+                if (!entity.Contains("new_name") || entity["new_name"] == null)
+                {
+                    entity["new_name"] = string.Format("PUAN|{0}", DateTime.Now.ToString("dd.MM.yyyy HH:mm"));
+                }
+
                 if (entity.Attributes.Contains("new_contactid") && entity["new_contactid"] != null)
                 {
                     #region | GET PROJECT DETAIL |
@@ -96,13 +101,13 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
 
                         if (pointType == 2) //Harcama
                         {
-                            entity["statuscode"] = new OptionSetValue(3); //Onay Bekliyor
+                            entity["statuscode"] = new OptionSetValue(100000000); //Onay Bekliyor
 
                             //TODO: Send Mail
                         }
                         else
                         {
-                            entity["statuscode"] = new OptionSetValue(4); //Onaylandı
+                            entity["statuscode"] = new OptionSetValue(100000001); //Onaylandı
                         }
                     }
                 }
