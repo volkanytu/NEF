@@ -62,7 +62,7 @@ namespace NEF.Library.Business
             return pointList.Where(p => p.Amount != null
                              && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
                              && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED)
-                             .Sum(p => p.Amount.Value);
+                             .Sum(p => p.ReelValue);
         }
 
         public void TransferPoints(Guid sourceContactId, Guid targetContactId)
@@ -80,7 +80,7 @@ namespace NEF.Library.Business
                     Name = "PUAN TRANSFER(AZALTIM)",
                     PointType = LoyaltyPoint.PointTypeCode.LESSENING.ToOptionSetValueWrapper(),
                     UsageType = LoyaltyPoint.UsageTypeCode.CARD.ToOptionSetValueWrapper(),
-                    Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+                    //Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
                 };
 
 

@@ -22,18 +22,18 @@ namespace NEF.ConsoleApp.LoyaltyPointManager
 
         public void DoWork()
         {
-            var wonPointsOFContact = _loyaltyBusiness.GetWonPointsOfContacts();
+            var wonPointsOfContact = _loyaltyBusiness.GetWonPointsOfContacts();
             var loyaltySegmentConfigs = _loyaltyConfigBusiness.GetList();
 
 
-            if (wonPointsOFContact == null || loyaltySegmentConfigs == null)
+            if (wonPointsOfContact == null || loyaltySegmentConfigs == null)
             {
                 return;
             }
 
-            _loyaltyBusiness.SetContactLoyaltySegment(wonPointsOFContact, loyaltySegmentConfigs);
+            _loyaltyBusiness.SetContactLoyaltySegment(wonPointsOfContact, loyaltySegmentConfigs);
 
-            foreach (var segment in wonPointsOFContact)
+            foreach (var segment in wonPointsOfContact)
             {
                 _contactBusiness.SetLoyaltySegment(segment.ContactId, segment.Segment);
             }

@@ -61,6 +61,26 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("statecode")]
         public OptionSetValueWrapper State { get; set; }
 
+        public decimal ReelValue
+        {
+            get
+            {
+                if (PointType != null && Amount != null)
+                {
+                    if (PointType.ToEnum<PointTypeCode>() == PointTypeCode.LESSENING
+                        || PointType.ToEnum<PointTypeCode>() == PointTypeCode.SPENDING)
+                    {
+                        return Amount.Value * -1;
+                    }
+                    else
+                    {
+                        return Amount.Value;
+                    }
+                }
+
+                return 0;
+            }
+        }
         public const string LOGICAL_NAME = "new_loyaltypoint";
 
         public enum StateCode
@@ -73,7 +93,8 @@ namespace NEF.Library.Entities.CrmEntities
         {
             ACTIVE = 1,
             PASSIVE = 2,
-            CONFIRMED
+            WAITING_CONFIRMED,
+            CONFIRMED,
         }
 
         public enum UsageTypeCode

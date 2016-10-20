@@ -53,6 +53,7 @@
     <Compile Include="CrmEntities\LoyaltySegmentConfig.cs" />
     <Compile Include="CrmEntities\OptionSetValueWrapper.cs" />
     <Compile Include="CrmEntities\CustomAttributes.cs" />
+    <Compile Include="CrmEntities\PointTransfer.cs" />
     <Compile Include="CrmEntities\Quote.cs" />
     <Compile Include="CustomEntities\LoyaltySegment.cs" />
     <Compile Include="Extensions.cs" />

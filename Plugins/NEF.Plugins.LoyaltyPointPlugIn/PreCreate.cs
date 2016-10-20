@@ -89,6 +89,22 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
                             entity["new_expiredate"] = (DateTime)project.ExpireDate;
                         }
                     }
+
+                    if (entity.Contains("new_pointtype") && entity["new_pointtype"] != null)
+                    {
+                        int pointType = ((OptionSetValue)entity["new_pointtype"]).Value;
+
+                        if (pointType == 2) //Harcama
+                        {
+                            entity["statuscode"] = new OptionSetValue(3); //Onay Bekliyor
+
+                            //TODO: Send Mail
+                        }
+                        else
+                        {
+                            entity["statuscode"] = new OptionSetValue(4); //Onaylandı
+                        }
+                    }
                 }
 
 
