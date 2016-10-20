@@ -105,6 +105,51 @@ var ContactDetailHelper = {
 
         return returnValue;
     },
+    "GetPointSummary": function (callbackFunction) {
+
+        var returnValue = null;
+        var jData = {};
+        jData.contactId = ContactDetailHelper.ContactId;
+        var jSonData = JSON.stringify(jData);
+
+        $.ajax({
+            url: CustomServiceUrl + "/GetContactPointSummary",
+            async: true,
+            dataType: "json",
+            contentType: "application/json;",
+            type: "POST",
+            data: jSonData,
+            beforeSend: function () {
+                Metronic.blockUI({ target: $("#plBodyUserInfo"), iconOnly: true });
+                Metronic.blockUI({ target: $("#plBodyActivities"), iconOnly: true });
+                Metronic.blockUI({ target: $("#plBodyOpps"), iconOnly: true });
+                Metronic.blockUI({ target: $("#plBodyIntrested"), iconOnly: true });
+            },
+            complete: function () {
+                Metronic.unblockUI($("#plBodyUserInfo"));
+                Metronic.unblockUI($("#plBodyActivities"));
+                Metronic.unblockUI($("#plBodyOpps"));
+                Metronic.unblockUI($("#plBodyIntrested"));
+            },
+            success: function (data) {
+                debugger;
+                if (data != null) {
+                    returnValue = data;
+
+                    callbackFunction(data);
+
+                }
+                else {
+                    returnValue = false;
+                }
+            },
+            error: function (a, b, c) {
+                returnValue = false;
+            }
+        });
+
+        return returnValue;
+    },
     "GetCustomerQuotes": function (callbackFunction) {
         var jData = {};
         jData.customerId = ContactDetailHelper.ContactId;
@@ -1575,6 +1620,8 @@ app.controller('ctrlTest', ['$scope', function ($scope) {
                             $("#sendSmsSelection").prop("checked", $scope.contact.sendSMS);
                         }
 
+                        GetCustomerPointSummary();
+
                         GetCustomerQuotes();
                         GetCustomerOpportunities();
                         GetCustomerActivities();
@@ -1589,6 +1636,8 @@ app.controller('ctrlTest', ['$scope', function ($scope) {
                         }, 60000);
 
                     }
+
+
                 });
             }
             else {
@@ -2356,6 +2405,19 @@ app.controller('ctrlTest', ['$scope', function ($scope) {
                     });
 
                     parent.IndexHelper.AutoResize("ifrmContent");
+                }
+                else {
+                    //parent.IndexHelper.ToastrShow(false, e.Result, "Satış Bilgileri");
+                }
+            });
+        });
+    }
+
+    function GetCustomerPointSummary() {
+        ContactDetailHelper.GetPointSummary(function (e) {
+            $scope.$apply(function () {
+                if (e.Success) {
+                    $scope.PointSummary = e.ReturnObject;
                 }
                 else {
                     //parent.IndexHelper.ToastrShow(false, e.Result, "Satış Bilgileri");
