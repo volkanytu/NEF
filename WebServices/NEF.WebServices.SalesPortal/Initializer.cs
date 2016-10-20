@@ -10,21 +10,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NEF.Plugins.PointTransferPlugin
+namespace NEF.WebServices.SalesPortal
 {
     public static class Initializer
     {
         public static ILoyaltyPointBusiness LoyatyPointBusiness;
+        public static IOrganizationService CrmService;
 
-        public static void Init(IOrganizationService service)
+        public static void Init()
         {
             ISqlAccess sqlAccess = new SqlAccess(Globals.ConnectionString);
             IMsCrmAccess msCrmAccess = new MsCrmAccess(true);
-            msCrmAccess.CrmService = service;
 
             ILoyaltyPointDao loyaltyPointDao = new LoyaltyPointDao(msCrmAccess, sqlAccess);
 
             LoyatyPointBusiness = new LoyaltyPointBusiness(loyaltyPointDao);
+            CrmService = msCrmAccess.GetCrmService();
         }
     }
 }

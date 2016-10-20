@@ -93,5 +93,27 @@ namespace NEF.Library.Business
                 this.Insert(lp);
             }
         }
+
+        public void ConfirmPointUsage(Guid loyaltyPointId)
+        {
+            LoyaltyPoint lp = new LoyaltyPoint
+            {
+                Id = loyaltyPointId,
+                Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+            };
+
+            this.Update(lp);
+        }
+
+        public void RefusePointUsage(Guid loyaltyPointId)
+        {
+            LoyaltyPoint lp = new LoyaltyPoint
+            {
+                Id = loyaltyPointId,
+                Status = LoyaltyPoint.StatusCode.REFUSED.ToOptionSetValueWrapper()
+            };
+
+            this.Update(lp);
+        }
     }
 }

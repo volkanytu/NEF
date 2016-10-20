@@ -28,6 +28,11 @@ namespace NEF.WebServices.SalesPortal
         SqlDataAccess sda = null;
         IOrganizationService service = null;
 
+        public SalesPortal()
+        {
+            Initializer.Init();
+        }
+
         public string MakeContactSearch(string searchedWord)
         {
             Thread.Sleep(1000);
@@ -5565,5 +5570,56 @@ namespace NEF.WebServices.SalesPortal
             return returnValue;
         }
 
+        public MsCrmResult ConfirmPointUsage(string loyaltyPointId)
+        {
+            MsCrmResult returnValue = new MsCrmResult();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(loyaltyPointId))
+                {
+                    Guid loyaltyPoint = new Guid(loyaltyPointId);
+                    Initializer.LoyatyPointBusiness.ConfirmPointUsage(loyaltyPoint);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:loyaltyPointId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
+
+        public MsCrmResult RefusePointUsage(string loyaltyPointId)
+        {
+            MsCrmResult returnValue = new MsCrmResult();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(loyaltyPointId))
+                {
+                    Guid loyaltyPoint = new Guid(loyaltyPointId);
+                    Initializer.LoyatyPointBusiness.RefusePointUsage(loyaltyPoint);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:loyaltyPointId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
     }
 }

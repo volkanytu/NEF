@@ -689,5 +689,15 @@ namespace NEF.WebServices.SalesPortal
             , UriTemplate = "/CreateProductForRent")]
         MsCrmResult CreateProductForRent(Product product);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json
+            , UriTemplate = "/ConfirmPointUsage")]
+        MsCrmResult ConfirmPointUsage(string loyaltyPointId);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json
+            , UriTemplate = "/RefusePointUsage")]
+        MsCrmResult RefusePointUsage(string loyaltyPointId);
+
     }
 }

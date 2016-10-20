@@ -99,6 +99,7 @@ namespace NEF.Library.Entities.CrmEntities
             PASSIVE = 2,
             WAITING_CONFIRMED,
             CONFIRMED,
+            REFUSED,
         }
 
         public enum UsageTypeCode
