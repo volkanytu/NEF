@@ -6,7 +6,7 @@ var ContactSearchHelper = {
     "OnLoad": function () {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
-        QuickSidebar.init() // init quick sidebar
+        QuickSidebar.init(); // init quick sidebar
         Index.init();
         Index.initDashboardDaterange();
         Index.initJQVMAP(); // init index page's custom scripts
@@ -29,10 +29,10 @@ var ContactSearchHelper = {
         ContactSearchHelper.OnChangeKeyPressEvents();
 
 
-        //var url = $.url(document.location);
-        //if (url.param("phonenumber") != undefined) {
-        //    parent.IndexHelper.PhoneNumber = url.param("phonenumber");
-        //}
+        var url = $.url(document.location);
+        if (url.param("phonenumber") != undefined) {
+            parent.IndexHelper.PhoneNumber = url.param("phonenumber");
+        }
 
         $(window).resize(function () {
             parent.IndexHelper.AutoResize("ifrmContent");

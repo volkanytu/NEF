@@ -30,8 +30,6 @@
     <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css" href="global/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
 
-
-
     <!-- END PAGE LEVEL PLUGIN STYLES -->
     <!-- BEGIN PAGE STYLES -->
     <link href="admin/pages/css/tasks.css" rel="stylesheet" type="text/css" />
@@ -43,7 +41,25 @@
     <link href="admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico"/>
+
+    <style>
+        .modal50 > .modal-dialog {
+            width: 50% !important;
+        }
+
+        .modal100 > .modal-dialog {
+            width: 100% !important;
+        }
+
+        .modal90 > .modal-dialog {
+            width: 90% !important;
+        }
+
+        .modal80 > .modal-dialog {
+            width: 80% !important;
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -64,7 +80,25 @@
         <!-- BEGIN CONTENT -->
 
         <div class="page-content">
-
+            <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Widget settings form goes here
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn blue">Save changes</button>
+                            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
             <div class="row" id="main">
                 <div class="col-md-6">
 
@@ -140,14 +174,45 @@
                                         </div>
                                         <!--/span-->
                                     </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Ön Ödeme Tutarı</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                    <input type="text" class="form-control" ng-model="quote.PrePaymentPriceString" disabled/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Ara Ödemeler Tutarı</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-wallet"></i> </span>
+                                                    <input type="text" class="form-control" ng-model="quote.SumIntervalPriceString" disabled/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Ön Ödeme Tutarı</label>
+                                                <label class="control-label col-md-3">Referans Kişisi</label>
                                                 <div class="col-md-9">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
-                                                        <input type="text" class="form-control" ng-model="quote.PrePaymentPriceString" disabled />
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" style="background-color:white;" placeholder="Referans Kişisi" id="txtContact" value="{{quote.ReferenceContact.Name}}" crmid="{{quote.ReferenceContact.Id}}" readonly />
+                                                                <span class="input-group-addon" style="background-color:white; margin-right:5px !important;"><a href="#" ng-click="RemoveContact()"><i class="glyphicon glyphicon-remove"></i></a> </span>
+                                                                <span class="input-group-addon" style="background-color:white;"><a href="#" ng-click="OpenContactSearchPage()"><i class="glyphicon glyphicon-search"></i></a> </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -155,12 +220,13 @@
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Ara Ödemeler Tutarı</label>
+                                                <label class="control-label col-md-3">Kullanım Türü</label>
                                                 <div class="col-md-9">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="icon-wallet"></i> </span>
-                                                        <input type="text" class="form-control" ng-model="quote.SumIntervalPriceString" disabled />
-                                                    </div>
+                                                    <select name="foo" class="form-control" ng-model="quote.UsageType" ng-disabled="IsFormDisabled">
+                                                        <option value="-1"></option>
+                                                        <option value="1">Kart</option>
+                                                        <option value="2">Nakit</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -660,7 +726,7 @@
     <script src="global/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
     <script src="global/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
     <script src="global/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
-    <script src="global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script src="global/plugins/bootbox/bootbox.js"></script>
 
     <!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
     <script src="global/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>

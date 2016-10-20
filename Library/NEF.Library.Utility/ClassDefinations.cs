@@ -531,6 +531,8 @@ namespace NEF.Library.Utility
         public EntityReference SecondCustomer { get; set; }
         public bool IsProjectGyo { get; set; }
         public EntityReference Annotation { get; set; }
+        public EntityReference ReferenceContact { get; set; }
+        public int? UsageType { get; set; }
 
         public EntityReference Retailer { get; set; }
     }
