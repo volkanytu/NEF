@@ -29,7 +29,7 @@ namespace NEF.Library.Constants.SqlQueries
                                                     FROM
 	                                                    new_loyaltypoint LP WITH (NOLOCK)
                                                     WHERE
-	                                                    LP.new_loyaltypointId = @Id";
+	                                                    LP.new_loyaltypointId = @id";
 
         #endregion
 
