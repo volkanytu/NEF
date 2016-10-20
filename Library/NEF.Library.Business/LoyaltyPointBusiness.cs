@@ -115,5 +115,43 @@ namespace NEF.Library.Business
 
             this.Update(lp);
         }
+
+        public LoyaltyPointSummary GetContactPointSummary(Guid contactId)
+        {
+            var pointList = this.GetAllPointsOfContact(contactId);
+
+            if (pointList == null || pointList.Count == 0)
+            {
+                return null;
+            }
+
+            LoyaltyPointSummary summary = new LoyaltyPointSummary();
+            summary.ContactId = contactId.ToEntityReferenceWrapper<Contact>();
+
+            summary.Balance = pointList.Where(p => p.Amount != null
+                                         && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                                         && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED)
+                                         .Sum(p => p.ReelValue);
+
+            summary.TotalWonPoint = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.PointTypeCode>() == LoyaltyPoint.PointTypeCode.EARNING)
+                             .Sum(p => p.ReelValue);
+
+            summary.CardAmount = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.UsageTypeCode>() == LoyaltyPoint.UsageTypeCode.CARD)
+                             .Sum(p => p.ReelValue);
+
+            summary.CashAmount = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.UsageTypeCode>() == LoyaltyPoint.UsageTypeCode.CASH)
+                             .Sum(p => p.ReelValue);
+
+            return summary;
+        }
     }
 }

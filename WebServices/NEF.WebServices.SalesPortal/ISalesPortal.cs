@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xrm.Sdk;
+using NEF.Library.Entities.CustomEntities;
 using NEF.Library.Utility;
 using System;
 using System.Collections.Generic;
@@ -698,6 +699,11 @@ namespace NEF.WebServices.SalesPortal
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json
             , UriTemplate = "/RefusePointUsage")]
         MsCrmResult RefusePointUsage(string loyaltyPointId);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json
+            , UriTemplate = "/GetContactPointSummary")]
+        MsCrmResult<LoyaltyPointSummary> GetContactPointSummary(string contactId);
 
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="CrmEntities\CustomAttributes.cs" />
     <Compile Include="CrmEntities\PointTransfer.cs" />
     <Compile Include="CrmEntities\Quote.cs" />
+    <Compile Include="CustomEntities\LoyaltyPointSummary.cs" />
     <Compile Include="CustomEntities\LoyaltySegment.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="CrmEntities\Project.cs" />
