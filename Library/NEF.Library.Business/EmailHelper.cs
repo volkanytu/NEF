@@ -10,7 +10,7 @@ namespace NEF.Library.Business
 {
     public static class EmailHelper
     {
-        public static MsCrmResult SendMail(Guid ObjectId, string ObjectType, Entity[] fromPartyArray, Entity[] toPartyArray
+        public static MsCrmResult SendMail(EntityReference entityObject, Entity[] fromPartyArray, Entity[] toPartyArray
             , string subject, string mailBody, IOrganizationService service)
         {
             MsCrmResult returnValue = new MsCrmResult();
@@ -26,10 +26,9 @@ namespace NEF.Library.Business
                 email["description"] = mailBody;
                 email["directioncode"] = true;
 
-                if (ObjectId != Guid.Empty && !string.IsNullOrEmpty(ObjectType))
+                if (entityObject != null)
                 {
-                    EntityReference regardingObject = new EntityReference(ObjectType, ObjectId);
-                    email.Attributes.Add("regardingobjectid", regardingObject);
+                    email.Attributes.Add("regardingobjectid", entityObject);
                 }
 
                 returnValue.CrmId = service.Create(email);
@@ -59,7 +58,7 @@ namespace NEF.Library.Business
             return returnValue;
         }
 
-        public static MsCrmResult SendMail(Guid ObjectId, string ObjectType, Entity fromParty, Entity toParty
+        public static MsCrmResult SendMail(EntityReference entityObject, Entity fromParty, Entity toParty
             , string subject, string mailBody, IOrganizationService service)
         {
             MsCrmResult returnValue = new MsCrmResult();
@@ -75,10 +74,9 @@ namespace NEF.Library.Business
                 email["description"] = mailBody;
                 email["directioncode"] = true;
 
-                if (ObjectId != Guid.Empty && !string.IsNullOrEmpty(ObjectType))
+                if (entityObject != null)
                 {
-                    EntityReference regardingObject = new EntityReference(ObjectType, ObjectId);
-                    email.Attributes.Add("regardingobjectid", regardingObject);
+                    email.Attributes.Add("regardingobjectid", entityObject);
                 }
 
                 returnValue.CrmId = service.Create(email);

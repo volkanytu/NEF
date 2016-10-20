@@ -77,10 +77,6 @@
       <Project>{d41ef46c-69d9-4697-8929-f468c93a0acf}</Project>
       <Name>NEF.Library.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Library\NEF.Library.IocManager\NEF.Library.IocManager.csproj">
-      <Project>{e2cce766-02dd-4b6f-8931-bc32a1aab3d1}</Project>
-      <Name>NEF.Library.IocManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Library\NEF.Library.Utility\NEF.Library.Utility.csproj">
       <Project>{a038843c-1375-4866-b4c9-5c090d90dcff}</Project>
       <Name>NEF.Library.Utility</Name>

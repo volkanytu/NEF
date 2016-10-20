@@ -78,6 +78,9 @@
     <Compile Include="..\..\Library\NEF.Library.Business\CurrencyHelper.cs">
       <Link>Business\CurrencyHelper.cs</Link>
     </Compile>
+    <Compile Include="..\..\Library\NEF.Library.Business\EmailHelper.cs">
+      <Link>Business\EmailHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\Library\NEF.Library.Business\FeedsHelper.cs">
       <Link>Business\FeedsHelper.cs</Link>
     </Compile>

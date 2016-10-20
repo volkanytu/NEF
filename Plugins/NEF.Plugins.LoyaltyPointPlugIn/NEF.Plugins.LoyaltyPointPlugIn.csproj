@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Library\NEF.Library.Business\EmailHelper.cs">
+      <Link>Business\EmailHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\Library\NEF.Library.Business\ProjectHelper.cs">
       <Link>Business\ProjectHelper.cs</Link>
     </Compile>
@@ -77,6 +80,7 @@
     <Compile Include="..\..\Library\NEF.Library.Utility\SqlDataAccess.cs">
       <Link>Utility\SqlDataAccess.cs</Link>
     </Compile>
+    <Compile Include="PostCreate.cs" />
     <Compile Include="PostUpdate.cs" />
     <Compile Include="PreCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

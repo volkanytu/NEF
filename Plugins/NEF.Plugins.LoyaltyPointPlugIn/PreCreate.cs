@@ -81,29 +81,31 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
                     }
                     #endregion
 
-                    if (project != null)
-                    {
-                        if (project.Ratio != null && salesAmount != null)
-                        {
-                            decimal pointAmount = (decimal)((salesAmount * project.Ratio));
-                            entity["new_amount"] = pointAmount;
-                        }
-
-                        if (project.ExpireDate != null)
-                        {
-                            entity["new_expiredate"] = (DateTime)project.ExpireDate;
-                        }
-                    }
-
                     if (entity.Contains("new_pointtype") && entity["new_pointtype"] != null)
                     {
                         int pointType = ((OptionSetValue)entity["new_pointtype"]).Value;
 
-                        if (pointType == 2) //Harcama
+                        if (pointType == 1) //Kazanım
+                        {
+                            if (project != null)
+                            {
+                                if (project.Ratio != null && salesAmount != null)
+                                {
+                                    decimal pointAmount = (decimal)((salesAmount * project.Ratio));
+                                    entity["new_amount"] = pointAmount;
+                                }
+
+                                if (project.ExpireDate != null)
+                                {
+                                    entity["new_expiredate"] = (DateTime)project.ExpireDate;
+                                }
+                            }
+
+                            entity["statuscode"] = new OptionSetValue(100000001); //Onaylandı
+                        }
+                        else if (pointType == 2) //Harcama
                         {
                             entity["statuscode"] = new OptionSetValue(100000000); //Onay Bekliyor
-
-                            //TODO: Send Mail
                         }
                         else
                         {
