@@ -85,6 +85,7 @@
   <ItemGroup>
     <Content Include="addinterestedprojects.html" />
     <Content Include="callcenter.html" />
+    <Content Include="confirmpoint.html" />
     <Content Include="contactsearchforsale.html" />
     <Content Include="createaccount.html" />
     <Content Include="contactsearch.html" />
@@ -2755,6 +2756,7 @@
     <Content Include="scripts\pagescripts\activityInterestedProjects.js" />
     <Content Include="scripts\pagescripts\activityIntrestedHouses.js" />
     <Content Include="scripts\pagescripts\callcenter.js" />
+    <Content Include="scripts\pagescripts\confirmpoint.js" />
     <Content Include="scripts\pagescripts\confirm.js" />
     <Content Include="scripts\pagescripts\contactCreate.js" />
     <Content Include="scripts\pagescripts\contactDetail.js" />
