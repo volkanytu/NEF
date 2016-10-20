@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D1610F4-309B-4026-B395-7ECAF935267A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NEF.Plugins.PointTransferPlugin</RootNamespace>
+    <AssemblyName>NEF.Plugins.PointTransferPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NEF.Plugins.PointTransfer.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\..\Library\Assemblies\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\..\Library\Assemblies\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PostCreate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NEF.Plugins.PointTransfer.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\DataLibrary\NEF.DataLibrary.SqlDataLayer\NEF.DataLibrary.SqlDataLayer.csproj">
+      <Project>{f51e9744-617a-47e9-8019-1ba63f70750f}</Project>
+      <Name>NEF.DataLibrary.SqlDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Business\NEF.Library.Business.csproj">
+      <Project>{cf0b7591-610a-45c5-a160-9f1f1fd01804}</Project>
+      <Name>NEF.Library.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Constants\NEF.Library.Constants.csproj">
+      <Project>{4de23b7f-4055-42cb-9df0-f7fd0af641ea}</Project>
+      <Name>NEF.Library.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Entities\NEF.Library.Entities.csproj">
+      <Project>{d41ef46c-69d9-4697-8929-f468c93a0acf}</Project>
+      <Name>NEF.Library.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.IocManager\NEF.Library.IocManager.csproj">
+      <Project>{e2cce766-02dd-4b6f-8931-bc32a1aab3d1}</Project>
+      <Name>NEF.Library.IocManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Utility\NEF.Library.Utility.csproj">
+      <Project>{a038843c-1375-4866-b4c9-5c090d90dcff}</Project>
+      <Name>NEF.Library.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
