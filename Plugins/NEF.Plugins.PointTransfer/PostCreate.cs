@@ -1,9 +1,12 @@
 ﻿using Microsoft.Xrm.Sdk;
+using NEF.Library.Business.Interfaces;
 using NEF.Library.Entities.CrmEntities;
+using NEF.Library.IocManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NEF.DataLibrary.SqlDataLayer;
 
 namespace NEF.Plugins.PointTransferPlugin
 {
@@ -29,14 +32,26 @@ namespace NEF.Plugins.PointTransferPlugin
 
             Entity entity = (Entity)context.InputParameters["Target"];
 
+            EntityReference erSourceContact = null;
+            EntityReference erTargetContact = null;
+
+            EntityReferenceWrapper erPointTransfer = entity.ToEntityReference().ToEntityReferenceWrapper();
+
+            Initializer.Init(service);
+
             if (entity.Contains(PointTransfer.SOURCE_CONTACT_ID) && entity[PointTransfer.SOURCE_CONTACT_ID] != null)
             {
-                var erSourceContact = (EntityReference)entity[PointTransfer.SOURCE_CONTACT_ID];
+                erSourceContact = (EntityReference)entity[PointTransfer.SOURCE_CONTACT_ID];
             }
 
             if (entity.Contains(PointTransfer.TARGET_CONTACT_ID) && entity[PointTransfer.TARGET_CONTACT_ID] != null)
             {
-                var erTargetContact = (EntityReference)entity[PointTransfer.TARGET_CONTACT_ID];
+                erTargetContact = (EntityReference)entity[PointTransfer.TARGET_CONTACT_ID];
+            }
+
+            if (erSourceContact != null && erTargetContact != null)
+            {
+                Initializer.LoyatyPointBusiness.TransferPoints(erSourceContact.Id, erTargetContact.Id, erPointTransfer);
             }
         }
     }

@@ -61,6 +61,10 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("statecode")]
         public OptionSetValueWrapper State { get; set; }
 
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_pointransferid")]
+        public EntityReferenceWrapper PointTransferId { get; set; }
+
         public decimal ReelValue
         {
             get

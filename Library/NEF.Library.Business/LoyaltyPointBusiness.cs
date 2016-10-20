@@ -65,7 +65,7 @@ namespace NEF.Library.Business
                              .Sum(p => p.ReelValue);
         }
 
-        public void TransferPoints(Guid sourceContactId, Guid targetContactId)
+        public void TransferPoints(Guid sourceContactId, Guid targetContactId, EntityReferenceWrapper erPointTransfer = null)
         {
             decimal balanceOfSource = this.GetBalanceOfContact(sourceContactId);
 
@@ -80,7 +80,7 @@ namespace NEF.Library.Business
                     Name = "PUAN TRANSFER(AZALTIM)",
                     PointType = LoyaltyPoint.PointTypeCode.LESSENING.ToOptionSetValueWrapper(),
                     UsageType = LoyaltyPoint.UsageTypeCode.CARD.ToOptionSetValueWrapper(),
-                    //Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+                    PointTransferId = erPointTransfer
                 };
 
 
