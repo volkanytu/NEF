@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Runtime.Serialization;
 using System.IO;
 using NEF.Library.Entities.CrmEntities;
+using System.Reflection;
 
 namespace NEF.Library.Entities
 {
@@ -119,6 +120,35 @@ namespace NEF.Library.Entities
             }
 
             return default(TValue);
+        }
+
+        public static EntityReferenceWrapper ToEntityReferenceWrapper<TClass>(this Guid objectId) where TClass : class
+        {
+            EntityReferenceWrapper returnValue = null;
+
+            if (objectId == Guid.Empty)
+            {
+                return null;
+            }
+
+            MemberInfo info = typeof(TClass);
+
+            var schemaAttr = info.GetCustomAttributes(typeof(CrmSchemaName), false).OfType<CrmSchemaName>().FirstOrDefault();
+
+            if (schemaAttr != null)
+            {
+                string entityName = schemaAttr.SchemaName;
+
+                returnValue = new EntityReferenceWrapper
+                {
+                    Id = objectId,
+                    LogicalName = entityName
+                };
+
+                return returnValue;
+            }
+
+            return null;
         }
 
     }

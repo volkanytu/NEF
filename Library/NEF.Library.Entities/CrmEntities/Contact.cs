@@ -20,6 +20,8 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("new_loyaltysegment")]
         public OptionSetValueWrapper LoyaltySegment { get; set; }
 
+        public const string LOGICAL_NAME = "contact";
+
         public enum LoyaltySegmentCode
         {
             RED = 1,

@@ -14,11 +14,10 @@ namespace NEF.Plugins.LoyaltyPointPlugIn
         {
             SqlDataAccess sda = null;
 
-            sda = new SqlDataAccess();
-            sda.openConnection(Globals.ConnectionString);
-
             try
             {
+                sda = new SqlDataAccess();
+                sda.openConnection(Globals.ConnectionString);
 
                 #region | SERVICE |
                 IPluginExecutionContext context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));

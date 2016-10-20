@@ -10,6 +10,7 @@ namespace NEF.DataLibrary.SqlDataLayer.Interfaces
         LoyaltyPoint Get(Guid id);
         Guid Insert(LoyaltyPoint loyaltyPoint);
         void Update(LoyaltyPoint loyaltyPoint);
-        List<LoyaltySegment> GetPointsWithContacts();
+        List<LoyaltySegment> GetWonPointsOfContacts();
+        List<LoyaltyPoint> GetAllPointsOfContact(Guid contactId);
     }
 }

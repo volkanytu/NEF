@@ -52,11 +52,20 @@ namespace NEF.DataLibrary.SqlDataLayer
             return dt.ToList<LoyaltyPoint>().FirstOrDefault();
         }
 
-        public List<LoyaltySegment> GetPointsWithContacts()
+        public List<LoyaltySegment> GetWonPointsOfContacts()
         {
-            DataTable dt = _sqlAccess.GetDataTable(LoyaltyPointQueries.GET_TOTAL_POINT_WITH_CONTACT);
+            DataTable dt = _sqlAccess.GetDataTable(LoyaltyPointQueries.GET_WON_POINTS_OF_CONTACT);
 
             return dt.ToList<LoyaltySegment>();
+        }
+
+        public List<LoyaltyPoint> GetAllPointsOfContact(Guid contactId)
+        {
+            SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@contactId", contactId) };
+
+            DataTable dt = _sqlAccess.GetDataTable(LoyaltyPointQueries.GET_ALL_POINTS_OF_CONTACT, parameters);
+
+            return dt.ToList<LoyaltyPoint>();
         }
     }
 }

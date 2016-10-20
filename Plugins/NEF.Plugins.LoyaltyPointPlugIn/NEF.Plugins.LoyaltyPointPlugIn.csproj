@@ -77,6 +77,7 @@
     <Compile Include="..\..\Library\NEF.Library.Utility\SqlDataAccess.cs">
       <Link>Utility\SqlDataAccess.cs</Link>
     </Compile>
+    <Compile Include="PostUpdate.cs" />
     <Compile Include="PreCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

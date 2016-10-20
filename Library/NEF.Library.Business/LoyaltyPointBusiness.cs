@@ -34,9 +34,9 @@ namespace NEF.Library.Business
             return _loyaltyPointDao.Get(id);
         }
 
-        public List<LoyaltySegment> GetPointsWithContacts()
+        public List<LoyaltySegment> GetWonPointsOfContacts()
         {
-            return _loyaltyPointDao.GetPointsWithContacts();
+            return _loyaltyPointDao.GetWonPointsOfContacts();
         }
 
         public void SetContactLoyaltySegment(List<LoyaltySegment> loyaltySegmentList, List<LoyaltySegmentConfig> loyaltySegmentConfigList)
@@ -48,9 +48,50 @@ namespace NEF.Library.Business
                         .FirstOrDefault(p => p.MinValue < loyaltySegment.TotalPoint && p.MaxValue > loyaltySegment.TotalPoint)
                         .LoyaltySegment.ToEnum<Contact.LoyaltySegmentCode>();
             }
-            //loyaltySegmentList.Select(sl => sl.Segment = loyaltySegmentConfigList
-            //    .Where(conf => conf.MinValue < sl.TotalPoint && conf.MaxValue > sl.TotalPoint)
-            //    .FirstOrDefault().LoyaltySegment.ToEnum<Contact.LoyaltySegmentCode>());
+        }
+
+        public List<LoyaltyPoint> GetAllPointsOfContact(Guid contactId)
+        {
+            return _loyaltyPointDao.GetAllPointsOfContact(contactId);
+        }
+
+        public decimal GetBalanceOfContact(Guid contactId)
+        {
+            var pointList = this.GetAllPointsOfContact(contactId);
+
+            return pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED)
+                             .Sum(p => p.Amount.Value);
+        }
+
+        public void TransferPoints(Guid sourceContactId, Guid targetContactId)
+        {
+            decimal balanceOfSource = this.GetBalanceOfContact(sourceContactId);
+
+            if (balanceOfSource > 0)
+            {
+                LoyaltyPoint lp = new LoyaltyPoint
+                {
+                    ContactId = sourceContactId.ToEntityReferenceWrapper<Contact>(),
+                    Amount = balanceOfSource,
+                    Description = "PUAN TRANSFER",
+                    ExpireDate = DateTime.Now.AddMonths(3),
+                    Name = "PUAN TRANSFER(AZALTIM)",
+                    PointType = LoyaltyPoint.PointTypeCode.LESSENING.ToOptionSetValueWrapper(),
+                    UsageType = LoyaltyPoint.UsageTypeCode.CARD.ToOptionSetValueWrapper(),
+                    Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+                };
+
+
+                this.Insert(lp);
+
+                lp.Name = "PUAN TRANSFER(ARTTIRIM)";
+                lp.ContactId = targetContactId.ToEntityReferenceWrapper<Contact>();
+                lp.PointType = LoyaltyPoint.PointTypeCode.ADDING.ToOptionSetValueWrapper();
+
+                this.Insert(lp);
+            }
         }
     }
 }

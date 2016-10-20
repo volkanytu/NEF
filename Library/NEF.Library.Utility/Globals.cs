@@ -239,5 +239,10 @@ namespace NEF.Library.Utility
         {
             get { return RegistryHelper.Get.Value("ConnectionStringRequest"); }
         }
+
+        public static string IsSendMailActive
+        {
+            get { return RegistryHelper.Get.Value("IsSendMailActive"); }
+        }
     }
 }

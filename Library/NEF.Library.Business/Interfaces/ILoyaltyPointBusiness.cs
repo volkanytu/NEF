@@ -9,7 +9,10 @@ namespace NEF.Library.Business.Interfaces
         LoyaltyPoint Get(Guid id);
         Guid Insert(LoyaltyPoint loyaltyPoint);
         void Update(LoyaltyPoint loyaltyPoint);
-        List<LoyaltySegment> GetPointsWithContacts();
+        List<LoyaltySegment> GetWonPointsOfContacts();
         void SetContactLoyaltySegment(List<LoyaltySegment> loyaltySegmentList, List<LoyaltySegmentConfig> loyaltySegmentConfigList);
+        List<LoyaltyPoint> GetAllPointsOfContact(Guid contactId);
+        decimal GetBalanceOfContact(Guid contactId);
+        void TransferPoints(Guid sourceContactId, Guid targetContactId);
     }
 }

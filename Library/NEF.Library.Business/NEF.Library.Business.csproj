@@ -86,6 +86,7 @@
     <Compile Include="ContactHelper.cs" />
     <Compile Include="ContractCoverHelper.cs" />
     <Compile Include="DiscountProtocolHelper.cs" />
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="FeedsHelper.cs" />
     <Compile Include="DocumentMerge.cs" />
     <Compile Include="FinancialAccountHelper.cs" />

@@ -32,6 +32,8 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("statecode")]
         public OptionSetValueWrapper State { get; set; }
 
+        public const string LOGICAL_NAME = "quote";
+
         public enum StateCode
         {
             ACTIVE = 0,

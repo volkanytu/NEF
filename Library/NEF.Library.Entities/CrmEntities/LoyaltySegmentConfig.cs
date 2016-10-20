@@ -36,6 +36,8 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("statecode")]
         public OptionSetValueWrapper State { get; set; }
 
+        public const string LOGICAL_NAME = "new_loyaltysegmentconfig";
+
         public enum StateCode
         {
             ACTIVE = 0,
