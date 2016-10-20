@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xrm.Sdk;
 using NEF.Library.Entities.CustomEntities;
+using CrmEntity = NEF.Library.Entities.CrmEntities;
 using NEF.Library.Utility;
 using System;
 using System.Collections.Generic;
@@ -705,5 +706,9 @@ namespace NEF.WebServices.SalesPortal
             , UriTemplate = "/GetContactPointSummary")]
         MsCrmResult<LoyaltyPointSummary> GetContactPointSummary(string contactId);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json
+            , UriTemplate = "/GetLoyaltyPoint")]
+        MsCrmResult<CrmEntity.LoyaltyPoint> GetLoyaltyPoint(string loyaltyPointId);
     }
 }

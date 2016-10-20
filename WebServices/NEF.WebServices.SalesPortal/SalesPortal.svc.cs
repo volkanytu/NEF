@@ -3,6 +3,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using NEF.Library.Business;
+using CrmEntity = NEF.Library.Entities.CrmEntities;
 using NEF.Library.Entities.CustomEntities;
 using NEF.Library.Utility;
 using System;
@@ -5640,6 +5641,32 @@ namespace NEF.WebServices.SalesPortal
                 else
                 {
                     throw new Exception("INVALID_PARAMETER:contactId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
+
+        public MsCrmResult<CrmEntity.LoyaltyPoint> GetLoyaltyPoint(string loyaltyPointId)
+        {
+            MsCrmResult<CrmEntity.LoyaltyPoint> returnValue = new MsCrmResult<CrmEntity.LoyaltyPoint>();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(loyaltyPointId))
+                {
+                    Guid loyaltyPoint = new Guid(loyaltyPointId);
+                    returnValue.ReturnObject = Initializer.LoyatyPointBusiness.Get(loyaltyPoint);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:loyaltyPointId");
                 }
             }
             catch (Exception ex)
