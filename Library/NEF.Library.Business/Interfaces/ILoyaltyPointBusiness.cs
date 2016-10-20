@@ -13,6 +13,9 @@ namespace NEF.Library.Business.Interfaces
         void SetContactLoyaltySegment(List<LoyaltySegment> loyaltySegmentList, List<LoyaltySegmentConfig> loyaltySegmentConfigList);
         List<LoyaltyPoint> GetAllPointsOfContact(Guid contactId);
         decimal GetBalanceOfContact(Guid contactId);
-        void TransferPoints(Guid sourceContactId, Guid targetContactId);
+        void TransferPoints(Guid sourceContactId, Guid targetContactId, EntityReferenceWrapper erPointTransfer = null);
+        void ConfirmPointUsage(Guid loyaltyPointId);
+        void RefusePointUsage(Guid loyaltyPointId);
+        LoyaltyPointSummary GetContactPointSummary(Guid contactId);
     }
 }

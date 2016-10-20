@@ -902,6 +902,14 @@ namespace NEF.Library.Utility
         public string Result { get; set; }
     }
 
+    public class MsCrmResult<TReturnObject>
+    {
+        public Guid CrmId { get; set; }
+        public bool Success { get; set; }
+        public string Result { get; set; }
+        public TReturnObject ReturnObject { get; set; }
+    }
+
     [Serializable]
     public class MsCrmResultObject
     {

@@ -6,7 +6,7 @@ using NEF.Library.Business.Interfaces;
 using NEF.Library.Entities.CrmEntities;
 using NEF.Library.IocManager;
 using NEF.Library.Utility;
-using SAHIBINDEN.DataLibrary.SqlDataLayer;
+using NEF.DataLibrary.SqlDataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

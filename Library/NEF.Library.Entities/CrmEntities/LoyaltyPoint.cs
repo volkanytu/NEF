@@ -61,6 +61,10 @@ namespace NEF.Library.Entities.CrmEntities
         [CrmFieldName("statecode")]
         public OptionSetValueWrapper State { get; set; }
 
+        [CrmFieldDataType(CrmDataType.ENTITYREFERENCE)]
+        [CrmFieldName("new_pointransferid")]
+        public EntityReferenceWrapper PointTransferId { get; set; }
+
         public decimal ReelValue
         {
             get
@@ -93,8 +97,9 @@ namespace NEF.Library.Entities.CrmEntities
         {
             ACTIVE = 1,
             PASSIVE = 2,
-            WAITING_CONFIRMED,
-            CONFIRMED,
+            WAITING_CONFIRMED=100000000,
+            CONFIRMED=100000001,
+            REFUSED = 100000002,
         }
 
         public enum UsageTypeCode

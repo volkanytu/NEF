@@ -10,7 +10,7 @@ using System.Net;
 using System.ServiceModel.Description;
 using System.Threading;
 
-namespace SAHIBINDEN.DataLibrary.SqlDataLayer
+namespace NEF.DataLibrary.SqlDataLayer
 {
     public class MsCrmAccess : IMsCrmAccess
     {

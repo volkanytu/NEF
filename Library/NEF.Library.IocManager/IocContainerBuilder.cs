@@ -3,7 +3,7 @@ using NEF.DataLibrary.SqlDataLayer;
 using NEF.DataLibrary.SqlDataLayer.Interfaces;
 using NEF.Library.Business;
 using NEF.Library.Business.Interfaces;
-using SAHIBINDEN.DataLibrary.SqlDataLayer;
+using NEF.DataLibrary.SqlDataLayer;
 using NEF.Library.Utility;
 
 namespace NEF.Library.IocManager

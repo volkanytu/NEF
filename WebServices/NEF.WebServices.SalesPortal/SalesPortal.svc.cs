@@ -3,6 +3,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using NEF.Library.Business;
+using NEF.Library.Entities.CustomEntities;
 using NEF.Library.Utility;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace NEF.WebServices.SalesPortal
     {
         SqlDataAccess sda = null;
         IOrganizationService service = null;
+
+        public SalesPortal()
+        {
+            Initializer.Init();
+        }
 
         public string MakeContactSearch(string searchedWord)
         {
@@ -5565,5 +5571,84 @@ namespace NEF.WebServices.SalesPortal
             return returnValue;
         }
 
+        #region | LOYALTY |
+        public MsCrmResult ConfirmPointUsage(string loyaltyPointId)
+        {
+            MsCrmResult returnValue = new MsCrmResult();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(loyaltyPointId))
+                {
+                    Guid loyaltyPoint = new Guid(loyaltyPointId);
+                    Initializer.LoyatyPointBusiness.ConfirmPointUsage(loyaltyPoint);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:loyaltyPointId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
+
+        public MsCrmResult RefusePointUsage(string loyaltyPointId)
+        {
+            MsCrmResult returnValue = new MsCrmResult();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(loyaltyPointId))
+                {
+                    Guid loyaltyPoint = new Guid(loyaltyPointId);
+                    Initializer.LoyatyPointBusiness.RefusePointUsage(loyaltyPoint);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:loyaltyPointId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
+
+        public MsCrmResult<LoyaltyPointSummary> GetContactPointSummary(string contactId)
+        {
+            MsCrmResult<LoyaltyPointSummary> returnValue = new MsCrmResult<LoyaltyPointSummary>();
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(contactId))
+                {
+                    Guid contact = new Guid(contactId);
+                    returnValue.ReturnObject = Initializer.LoyatyPointBusiness.GetContactPointSummary(contact);
+
+                    returnValue.Success = true;
+                }
+                else
+                {
+                    throw new Exception("INVALID_PARAMETER:contactId");
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue.Result = ex.Message;
+            }
+
+            return returnValue;
+        }
+        #endregion
     }
 }

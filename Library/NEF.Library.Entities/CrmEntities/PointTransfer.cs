@@ -27,5 +27,17 @@ namespace NEF.Library.Entities.CrmEntities
         public const string LOGICAL_NAME = "new_pointransfer";
         public const string SOURCE_CONTACT_ID = "new_sourcecontactid";
         public const string TARGET_CONTACT_ID = "new_targetcontactid";
+
+        public enum StateCode
+        {
+            ACTIVE = 0,
+            PASSIVE = 1
+        }
+
+        public enum StatusCode
+        {
+            ACTIVE = 1,
+            PASSIVE = 2
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace NEF.Library.Business
                              .Sum(p => p.ReelValue);
         }
 
-        public void TransferPoints(Guid sourceContactId, Guid targetContactId)
+        public void TransferPoints(Guid sourceContactId, Guid targetContactId, EntityReferenceWrapper erPointTransfer = null)
         {
             decimal balanceOfSource = this.GetBalanceOfContact(sourceContactId);
 
@@ -80,7 +80,7 @@ namespace NEF.Library.Business
                     Name = "PUAN TRANSFER(AZALTIM)",
                     PointType = LoyaltyPoint.PointTypeCode.LESSENING.ToOptionSetValueWrapper(),
                     UsageType = LoyaltyPoint.UsageTypeCode.CARD.ToOptionSetValueWrapper(),
-                    //Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+                    PointTransferId = erPointTransfer
                 };
 
 
@@ -92,6 +92,66 @@ namespace NEF.Library.Business
 
                 this.Insert(lp);
             }
+        }
+
+        public void ConfirmPointUsage(Guid loyaltyPointId)
+        {
+            LoyaltyPoint lp = new LoyaltyPoint
+            {
+                Id = loyaltyPointId,
+                Status = LoyaltyPoint.StatusCode.CONFIRMED.ToOptionSetValueWrapper()
+            };
+
+            this.Update(lp);
+        }
+
+        public void RefusePointUsage(Guid loyaltyPointId)
+        {
+            LoyaltyPoint lp = new LoyaltyPoint
+            {
+                Id = loyaltyPointId,
+                Status = LoyaltyPoint.StatusCode.REFUSED.ToOptionSetValueWrapper()
+            };
+
+            this.Update(lp);
+        }
+
+        public LoyaltyPointSummary GetContactPointSummary(Guid contactId)
+        {
+            var pointList = this.GetAllPointsOfContact(contactId);
+
+            if (pointList == null || pointList.Count == 0)
+            {
+                return null;
+            }
+
+            LoyaltyPointSummary summary = new LoyaltyPointSummary();
+            summary.ContactId = contactId.ToEntityReferenceWrapper<Contact>();
+
+            summary.Balance = pointList.Where(p => p.Amount != null
+                                         && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                                         && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED)
+                                         .Sum(p => p.ReelValue);
+
+            summary.TotalWonPoint = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.PointTypeCode>() == LoyaltyPoint.PointTypeCode.EARNING)
+                             .Sum(p => p.ReelValue);
+
+            summary.CardAmount = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.UsageTypeCode>() == LoyaltyPoint.UsageTypeCode.CARD)
+                             .Sum(p => p.ReelValue);
+
+            summary.CashAmount = pointList.Where(p => p.Amount != null
+                             && p.State.ToEnum<LoyaltyPoint.StateCode>() == LoyaltyPoint.StateCode.ACTIVE
+                             && p.Status.ToEnum<LoyaltyPoint.StatusCode>() == LoyaltyPoint.StatusCode.CONFIRMED
+                             && p.PointType.ToEnum<LoyaltyPoint.UsageTypeCode>() == LoyaltyPoint.UsageTypeCode.CASH)
+                             .Sum(p => p.ReelValue);
+
+            return summary;
         }
     }
 }

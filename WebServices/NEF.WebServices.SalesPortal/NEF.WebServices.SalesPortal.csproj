@@ -83,6 +83,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Initializer.cs" />
     <Compile Include="SalesPortal.svc.cs">
       <DependentUpon>SalesPortal.svc</DependentUpon>
     </Compile>
@@ -104,9 +105,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Library\DataLibrary\NEF.DataLibrary.SqlDataLayer\NEF.DataLibrary.SqlDataLayer.csproj">
+      <Project>{f51e9744-617a-47e9-8019-1ba63f70750f}</Project>
+      <Name>NEF.DataLibrary.SqlDataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Library\NEF.Library.Business\NEF.Library.Business.csproj">
       <Project>{cf0b7591-610a-45c5-a160-9f1f1fd01804}</Project>
       <Name>NEF.Library.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Constants\NEF.Library.Constants.csproj">
+      <Project>{4de23b7f-4055-42cb-9df0-f7fd0af641ea}</Project>
+      <Name>NEF.Library.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\NEF.Library.Entities\NEF.Library.Entities.csproj">
+      <Project>{d41ef46c-69d9-4697-8929-f468c93a0acf}</Project>
+      <Name>NEF.Library.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Library\NEF.Library.Utility\NEF.Library.Utility.csproj">
       <Project>{a038843c-1375-4866-b4c9-5c090d90dcff}</Project>

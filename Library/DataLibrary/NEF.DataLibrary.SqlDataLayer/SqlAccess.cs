@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace SAHIBINDEN.DataLibrary.SqlDataLayer
+namespace NEF.DataLibrary.SqlDataLayer
 {
     public class SqlAccess : ISqlAccess
     {
