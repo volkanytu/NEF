@@ -357,6 +357,8 @@ namespace NEF.Library.Utility
         public string GuarantorName { get; set; }
         [DataMember]
         public string GuarantorPhone { get; set; }
+        [DataMember]
+        public int LoyaltySegment { get; set; }
     }
 
     public class Account

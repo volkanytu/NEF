@@ -594,6 +594,7 @@ namespace NEF.Library.Business
 									,C.new_address3cityidName OverCityIdName
                                     ,C.new_nontcidentityaddress OverAddressDetail
 	                                ,C.EmailAddress1
+                                    ,C.new_loyaltysegment
 	                                ,C.MobilePhone
 	                                ,C.new_customertype CustomerType
 	                                ,C.GenderCode
@@ -675,6 +676,7 @@ namespace NEF.Library.Business
                     _contact.HasPaymentProblem = dt.Rows[0]["HasPaymentProblem"] != DBNull.Value ? (bool)dt.Rows[0]["HasPaymentProblem"] : false;
                     _contact.IsBlackList = dt.Rows[0]["IsBlackList"] != DBNull.Value ? (bool)dt.Rows[0]["IsBlackList"] : false;
                     _contact.MarketingGrantValue = dt.Rows[0]["PermissionMarketing"] != DBNull.Value ? (int)dt.Rows[0]["PermissionMarketing"] : 0;
+                    _contact.LoyaltySegment = dt.Rows[0]["new_loyaltysegment"] != DBNull.Value ? (int)dt.Rows[0]["new_loyaltysegment"] : 0;
                     _contact.sendEmail = dt.Rows[0]["donotemail"] != DBNull.Value ? !((bool)dt.Rows[0]["donotemail"]) : true;
                     _contact.sendFax = dt.Rows[0]["donotfax"] != DBNull.Value ? !((bool)dt.Rows[0]["donotfax"]) : true;
                     _contact.sendSMS = dt.Rows[0]["donotsendmm"] != DBNull.Value ? !((bool)dt.Rows[0]["donotsendmm"]) : true;
