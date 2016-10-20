@@ -85,6 +85,7 @@
   <ItemGroup>
     <Content Include="addinterestedprojects.html" />
     <Content Include="callcenter.html" />
+    <Content Include="contactsearchforsale.html" />
     <Content Include="createaccount.html" />
     <Content Include="contactsearch.html" />
     <Content Include="editaccount.html" />
@@ -2757,6 +2758,7 @@
     <Content Include="scripts\pagescripts\confirm.js" />
     <Content Include="scripts\pagescripts\contactCreate.js" />
     <Content Include="scripts\pagescripts\contactDetail.js" />
+    <Content Include="scripts\pagescripts\contactSearchForSale.js" />
     <Content Include="scripts\pagescripts\contactSearch.js" />
     <Content Include="scripts\pagescripts\edithouse.js" />
     <Content Include="scripts\pagescripts\editopportunity.js" />

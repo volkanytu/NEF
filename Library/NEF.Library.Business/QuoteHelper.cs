@@ -237,6 +237,9 @@ namespace NEF.Library.Business
                                     ,q.new_hassecondcustomer AS HasSecondCustomer
                                     ,q.new_secondcontactid AS SecondContactId
                                     ,q.new_secondcontactidName AS SecondContactIdName
+                                    ,q.new_referencecontactid AS ReferenceContactId
+                                    ,q.new_referencecontactidName AS ReferenceContactIdName
+                                    ,q.new_usagetype AS UsageType
 									,(
 										SELECT
 											P.new_iswithisgyo 
@@ -453,6 +456,16 @@ namespace NEF.Library.Business
                         _quote.SecondCustomer = er;
                     }
 
+                    if (dt.Rows[0]["ReferenceContactId"] != DBNull.Value)
+                    {
+                        _quote.ReferenceContact = new EntityReference() { Id = (Guid)dt.Rows[0]["ReferenceContactId"], Name = dt.Rows[0]["ReferenceContactIdName"].ToString(), LogicalName = "contact" };
+                    }
+
+                    if (dt.Rows[0]["UsageType"] != DBNull.Value)
+                    {
+                        _quote.UsageType = (int)dt.Rows[0]["UsageType"];
+                    }
+
                     _quote.Annotation = QuoteHelper.GetQuoteAttachment(_quote.QuoteId, sda);
 
                     MsCrmResultObject resultProduct = QuoteHelper.GetQuoteProducts(_quote.QuoteId, sda);
@@ -661,6 +674,9 @@ namespace NEF.Library.Business
                 if (_quote.Opportunity != null)
                     ent["opportunityid"] = _quote.Opportunity;
 
+                if (_quote.ReferenceContact != null)
+                    ent["new_referencecontactid"] = _quote.ReferenceContact;
+
                 if (_quote.Products != null)
                     ent["name"] += " - " + _quote.Products[0].Name;
 
@@ -678,6 +694,9 @@ namespace NEF.Library.Business
                     ent["new_salestype"] = new OptionSetValue((int)_quote.SalesType);
                 else
                     ent["new_salestype"] = new OptionSetValue((int)SalesTypes.Yeni);
+
+                if (_quote.UsageType != null && _quote.UsageType != -1)
+                    ent["new_usagetype"] = new OptionSetValue((int)_quote.UsageType);
 
                 ent["new_paymentplan"] = _quote.PaymentPlan;
 

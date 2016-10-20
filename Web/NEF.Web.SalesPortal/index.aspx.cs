@@ -25,9 +25,9 @@ namespace NEF.Web.SalesPortal
                     sda = new SqlDataAccess();
                     sda.openConnection(Globals.ConnectionString);
                     //string userName = @"NEF\zeynep.bulbul"; // RESEPSIYONIST
-                    //string userName = @"NEF\demet.durgut"; //SATIŞ
+                    string userName = @"NEF\demet.durgut"; //SATIŞ
                     //string userName = @"NEF\KWBornova"; //DIŞ BAYİ
-                    string userName = @"NEF\indibox";
+                    //string userName = @"NEF\indibox";
                     SystemUser sInfo = SystemUserHelper.GetSystemUserByDomainName(userName, sda);
                     //SystemUser sInfo = SystemUserHelper.GetSystemUserByDomainName(Environment.UserName, sda);
 

@@ -72,6 +72,13 @@ var QuoteHelper = {
             }
         });
     },
+    "ShowDialog": function ShowDialog(html, title, className) {
+        bootbox.dialog({
+            message: html,
+            title: title,
+            className: className
+        });
+    },
     "OnClickEvents": function () {
         $("#btnSelectPhoto").click(function () {
             $("#file").click();
@@ -150,6 +157,7 @@ var QuoteHelper = {
             jData.quote.DiscountPercentage = discountPercentage == "" || discountPercentage == "0.00" ? null : parseFloat(discountPercentage.replace(',', '').replace(',', ''));
             jData.quote.DiscountPrice = null;// discountPrice == "" || discountPrice == "0.00" ? null : discountPrice.replace(',', '').replace(',', '');
         }
+
 
         jData.quote.ContratDate = "/Date(" + $('#txtContratDate').data("datepicker").getDate().getTime() + ")/";
 
@@ -571,7 +579,20 @@ function mainController($scope) {
             }
         }
 
+        var contactId = $("#txtContact").attr("crmid");
+
+        if (contactId != null && contactId != undefined && contactId != "") {
+
+            if ($scope.quote.ReferenceContact == null)
+                $scope.quote.ReferenceContact = {};
+
+            $scope.quote.ReferenceContact.Id = $("#txtContact").attr("crmid");
+            $scope.quote.ReferenceContact.Name = $("#txtContact").val();
+            $scope.quote.ReferenceContact.LogicalName = "contact";
+        }
+
         QuoteHelper.UpdateQuote($scope.quote, function (e) {
+
             $scope.$apply(function () {
                 if (e.Success) {
                     parent.IndexHelper.ToastrShow(true, e.Result, "Satış Bilgileri");
@@ -583,6 +604,20 @@ function mainController($scope) {
             });
         });
     }
+
+    $scope.RemoveContact = function () {
+
+        $scope.contact.RefContact = null;
+
+        $("#txtContact").attr("crmid", null);
+        $("#txtContact").val(null);
+    }
+
+    $scope.OpenContactSearchPage = function () {
+
+        QuoteHelper.ShowDialog("<iframe src='contactsearchforsale.html' style='width:100% !important; border:none;height:650px;padding-left:0px !important;padding-right:0px !important;overflow-y:scroll !important;overflow-x: hidden !important;' scrolling='auto'></iframe>", "<i class='icon-calendar'></i> Kişi Arama", "modal90");
+    };
+
 
     $scope.CreateOrUpdatePrePayment = function (prePayment, isShowMessage) {
 
